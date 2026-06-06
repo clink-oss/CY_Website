@@ -167,12 +167,25 @@ button,input,textarea,select{font:inherit;font-family:inherit}
 .resource-list a:hover{border-color:var(--blue);background:#FAFCFF}
 .resource-list span{font-size:.75rem;color:var(--text-muted);font-weight:400}
 .resource-list a,.resource-list a:visited{color:var(--text)}
+.resource-code{display:flex;align-items:center;gap:.5rem;margin-top:.45rem;padding:.55rem .75rem;background:var(--bg);border-radius:6px;font-size:.78rem}
+.resource-code span{color:var(--text-muted)}
+.resource-code code{font-family:ui-monospace,monospace;font-weight:600;letter-spacing:.12em;color:var(--text)}
+.btn-copy{margin-left:auto;padding:.25rem .65rem;font-size:.72rem;border:1px solid var(--border);border-radius:4px;background:var(--surface);color:var(--text-muted);cursor:pointer;transition:border-color .2s,color .2s}
+.btn-copy:hover{border-color:var(--blue);color:var(--blue)}
+.btn-copy.is-copied{border-color:var(--blue);color:var(--blue)}
 .drawer-note{font-size:.78rem;color:var(--text-muted);margin-top:1rem;line-height:1.6}
-.site-footer{background:var(--dark);color:rgba(255,255,255,.62);padding:2.5rem 0 1.5rem;font-size:.85rem}
-.footer-inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem;align-items:flex-start}
+.site-footer{background:var(--dark);color:rgba(255,255,255,.62);padding:3rem 0 1.5rem;font-size:.85rem}
+.footer-inner{display:flex;flex-direction:column;gap:2rem}
+.footer-grid{display:grid;grid-template-columns:1.35fr repeat(4,minmax(0,1fr));gap:2rem 2.5rem;width:100%}
 .footer-brand .logo-text{color:#fff;font-size:.95rem}
 .footer-brand p{margin-top:.65rem;max-width:360px;line-height:1.65;opacity:.75}
-.footer-meta{text-align:right;opacity:.55;font-size:.78rem;line-height:1.7}
+.footer-col h4{color:#fff;font-size:.8rem;font-weight:600;margin-bottom:.85rem;letter-spacing:.04em}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.42rem}
+.footer-links a{color:rgba(255,255,255,.52);font-size:.82rem;transition:color .2s}
+.footer-links a:hover{color:#fff}
+.footer-links button{background:none;border:none;padding:0;font:inherit;color:rgba(255,255,255,.52);font-size:.82rem;cursor:pointer;text-align:left;transition:color .2s}
+.footer-links button:hover{color:#fff}
+.footer-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.75rem;width:100%;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.08);opacity:.5;font-size:.75rem;line-height:1.7}
 .reveal{opacity:0;transform:translateY(8px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
 .reveal.visible{opacity:1;transform:none}
 @media(max-width:1024px){
@@ -198,7 +211,8 @@ button,input,textarea,select{font:inherit;font-family:inherit}
 .impact-stats{grid-template-columns:repeat(2,1fr)}
 .contact-grid{grid-template-columns:1fr}
 .form-row{grid-template-columns:1fr}
-.footer-meta{text-align:left}
+.footer-grid{grid-template-columns:1fr 1fr}
+.footer-bottom{flex-direction:column}
 .media-item{grid-template-columns:72px 1fr}
 .media-item img{width:72px;height:54px}
 .prod-cat-tabs{gap:1.25rem;overflow-x:auto}
@@ -1562,15 +1576,55 @@ button,input,textarea,select{font:inherit;font-family:inherit}
     </form>
   </div></div></section>
 <div class="drawer-overlay" id="resource-drawer" aria-hidden="true" role="dialog" aria-labelledby="drawer-title">
-  <div class="drawer-panel"><div class="drawer-head"><h2 id="drawer-title">资料下载 Center</h2><button type="button" class="drawer-close" id="resource-close" aria-label="关闭">&times;</button></div>
+  <div class="drawer-panel"><div class="drawer-head"><h2 id="drawer-title">资料下载中心</h2><button type="button" class="drawer-close" id="resource-close" aria-label="关闭">&times;</button></div>
     <div class="drawer-body"><ul class="resource-list">
-      <li><a href="#" onclick="return false">课程硬件清单<span>PDF</span></a></li>
-    </ul><p style="font-size:.78rem;color:var(--text-muted);margin-top:1rem;line-height:1.6">如需完整技术文档与临床资料，请联系 clinical@example-medtech.com。</p></div>
+      <li>
+        <a href="https://pan.baidu.com/s/1ok-LHQFlbVB6gmGAzW3HDA" target="_blank" rel="noopener noreferrer">课程硬件清单<span>PDF · 百度网盘</span></a>
+        <div class="resource-code"><span>提取码</span><code>6mym</code><button type="button" class="btn-copy" data-copy="6mym">复制</button></div>
+      </li>
+    </ul><p class="drawer-note">点击上方链接将在新窗口打开百度网盘，输入提取码 <strong>6mym</strong> 即可下载。如需完整技术文档与临床资料，请联系 clinical@example-medtech.com。</p></div>
   </div></div>
 <footer class="site-footer"><div class="container footer-inner">
-  <div class="footer-brand"><div class="logo"><span class="logo-mark">E</span><span class="logo-text">示例公司</span></div>
-  <p>源自中国，服务全球。以医疗设备与临床价值为核心。<br>上海市浦东新区张江高科技园区示例路 888 号</p></div>
-  <div class="footer-meta"><div>© 2026 Example Medical Technology</div><div>沪ICP备00000000号</div></div>
+  <div class="footer-grid">
+    <div class="footer-brand"><div class="logo"><span class="logo-mark">E</span><span class="logo-text">示例公司 Example Medical</span></div>
+    <p>源自中国，服务全球。以医疗设备与临床价值为核心，构建可信赖的全球健康解决方案。<br>上海市浦东新区张江高科技园区示例路 888 号<br>总机：400-000-0000</p></div>
+    <div class="footer-col"><h4>医疗设备</h4><ul class="footer-links">
+      <li><a href="#products">高端 CT 扫描仪</a></li>
+      <li><a href="#products">MRI 磁共振系统</a></li>
+      <li><a href="#products">医用超声设备</a></li>
+      <li><a href="#products">手术机器人系统</a></li>
+      <li><a href="#products">AI 影像诊断系统</a></li>
+      <li><a href="#products">医疗云平台</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>解决方案</h4><ul class="footer-links">
+      <li><a href="#global">全球布局</a></li>
+      <li><a href="#cases">临床案例</a></li>
+      <li><a href="#impact">社会责任</a></li>
+      <li><a href="#products">影像诊断</a></li>
+      <li><a href="#products">手术系统</a></li>
+      <li><a href="#products">数字平台</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>服务与支持</h4><ul class="footer-links">
+      <li><button type="button" data-resource-open>资料下载中心</button></li>
+      <li><a href="#contact">产品咨询</a></li>
+      <li><a href="#contact">临床合作</a></li>
+      <li><a href="#contact">装机与服务</a></li>
+      <li><a href="#contact">渠道合作</a></li>
+      <li><a href="mailto:clinical@example-medtech.com">临床支持邮箱</a></li>
+    </ul></div>
+    <div class="footer-col"><h4>关于我们</h4><ul class="footer-links">
+      <li><a href="#hero">公司简介</a></li>
+      <li><a href="#global">全球运营</a></li>
+      <li><a href="#impact">可持续发展</a></li>
+      <li><a href="#contact">联系我们</a></li>
+      <li><a href="#contact">招贤纳士</a></li>
+      <li><a href="#contact">投资者关系</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Example Medical Technology Co., Ltd. 保留所有权利</div>
+    <div>沪ICP备00000000号 · 隐私政策 · 使用条款 · 合规声明</div>
+  </div>
 </div></footer>
 <script>
 (function(){
@@ -1742,7 +1796,7 @@ var HeroCarousel={
 var ResourceDrawer={
   init:function(){
     var drawer=$("#resource-drawer");
-    var openBtn=$("#resource-open");
+    var openBtns=$$("#resource-open,[data-resource-open]");
     var closeBtn=$("#resource-close");
     if(!drawer)return;
     function open(){
@@ -1755,10 +1809,25 @@ var ResourceDrawer={
       drawer.setAttribute("aria-hidden","true");
       document.body.classList.remove("drawer-open");
     }
-    on(openBtn,"click",open);
+    openBtns.forEach(function(btn){on(btn,"click",open)});
     on(closeBtn,"click",close);
     on(drawer,"click",function(e){if(e.target===drawer)close()});
     on(document,"keydown",function(e){if(e.key==="Escape")close()});
+    $$(".btn-copy",drawer).forEach(function(btn){
+      on(btn,"click",function(){
+        var text=btn.getAttribute("data-copy")||"";
+        if(!text)return;
+        if(navigator.clipboard&&navigator.clipboard.writeText){
+          navigator.clipboard.writeText(text).then(function(){
+            btn.classList.add("is-copied");
+            btn.textContent="已复制";
+            setTimeout(function(){btn.classList.remove("is-copied");btn.textContent="复制"},2000);
+          });
+        }else{
+          window.prompt("请手动复制提取码",text);
+        }
+      });
+    });
   }
 };
 
