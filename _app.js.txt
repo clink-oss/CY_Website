@@ -1,0 +1,187 @@
+(function(){
+"use strict";
+function $(s,c){return (c||document).querySelector(s)}
+function $$(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))}
+function on(el,ev,fn){if(el)el.addEventListener(ev,fn)}
+
+var Nav={
+  init:function(){
+    var header=$("#site-header"),nav=$(".nav"),toggle=$("#mobile-toggle");
+    on(window,"scroll",function(){
+      if(!header)return;
+      header.classList.toggle("scrolled",window.scrollY>20);
+      $$(".nav-link").forEach(function(a){
+        var id=a.getAttribute("href");
+        if(!id||id.charAt(0)!=="#")return;
+        var sec=$(id);
+        if(!sec)return;
+        var r=sec.getBoundingClientRect();
+        a.classList.toggle("active",r.top<=100&&r.bottom>100);
+      });
+    },{passive:true});
+    $$('.nav-link[href^="#"]').forEach(function(a){
+      on(a,"click",function(e){
+        var t=$(a.getAttribute("href"));
+        if(t){e.preventDefault();t.scrollIntoView({behavior:"smooth",block:"start"})}
+        if(nav)nav.classList.remove("nav-open");
+      });
+    });
+    on(toggle,"click",function(){if(nav)nav.classList.toggle("nav-open")});
+  }
+};
+
+var Reveal={
+  init:function(){
+    var els=$$(".reveal");
+    if(!("IntersectionObserver" in window)){els.forEach(function(e){e.classList.add("visible")});return}
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){en.target.classList.add("visible");io.unobserve(en.target)}
+      });
+    },{threshold:0.12,rootMargin:"0px 0px -40px 0px"});
+    els.forEach(function(el){io.observe(el)});
+  }
+};
+
+var Counter={
+  seen:new WeakSet(),
+  init:function(){
+    if(!("IntersectionObserver" in window))return;
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!en.isIntersecting||Counter.seen.has(en.target))return;
+        Counter.seen.add(en.target);
+        Counter.run(en.target);
+      });
+    },{threshold:0.4});
+    $$("#global [data-count]").forEach(function(el){io.observe(el)});
+  },
+  run:function(el){
+    var target=parseFloat(el.getAttribute("data-count"))||0;
+    var suffix=el.getAttribute("data-suffix")||"";
+    var scale=parseFloat(el.getAttribute("data-scale"))||1;
+    var t0=performance.now(),dur=1200;
+    function step(now){
+      var p=Math.min((now-t0)/dur,1);
+      var eased=1-Math.pow(1-p,3);
+      var val=target*eased;
+      if(scale>1) el.textContent=Math.floor(val/scale)+suffix;
+      else el.textContent=Math.floor(val)+suffix;
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+};
+
+var DeviceHub={
+  init:function(){
+    $$("[data-device-hub]").forEach(function(hub){
+      var tabs=$$(".device-tab",hub);
+      var navItems=$$(".device-nav-item",hub);
+      var panes=$$(".device-pane",hub);
+      function activateCat(cat,deviceId){
+        tabs.forEach(function(t){
+          t.classList.toggle("is-active",t.getAttribute("data-cat")===cat);
+        });
+        var firstInCat=null;
+        navItems.forEach(function(btn){
+          var show=btn.getAttribute("data-cat")===cat;
+          btn.hidden=!show;
+          if(show&&!firstInCat)firstInCat=btn.getAttribute("data-device");
+        });
+        var target=deviceId||firstInCat;
+        navItems.forEach(function(btn){
+          btn.classList.toggle("is-active",btn.getAttribute("data-device")===target);
+        });
+        panes.forEach(function(p){
+          p.classList.toggle("is-active",p.getAttribute("data-device")===target);
+        });
+      }
+      tabs.forEach(function(tab){
+        on(tab,"click",function(){
+          activateCat(tab.getAttribute("data-cat"));
+        });
+      });
+      navItems.forEach(function(btn){
+        on(btn,"click",function(){
+          activateCat(btn.getAttribute("data-cat"),btn.getAttribute("data-device"));
+        });
+      });
+      var activeTab=$(".device-tab.is-active",hub);
+      if(activeTab)activateCat(activeTab.getAttribute("data-cat"));
+    });
+  }
+};
+
+var SplitPanel={
+  init:function(){
+    $$("[data-split-view]").forEach(function(root){
+      var list=root.querySelector(".split-list");
+      var detail=root.querySelector(".split-detail");
+      var panes=$$(".split-detail-pane",detail);
+      var close=root.querySelector(".split-close");
+      if(!list||!detail)return;
+      $$(".media-item",list).forEach(function(item){
+        on(item,"click",function(){
+          var id=item.getAttribute("data-detail-id");
+          $$(".media-item",list).forEach(function(x){x.classList.remove("is-active")});
+          item.classList.add("is-active");
+          panes.forEach(function(p){p.hidden=p.id!==id});
+          root.classList.add("is-open");
+        });
+      });
+      on(close,"click",function(){
+        root.classList.remove("is-open");
+        $$(".media-item",list).forEach(function(x){x.classList.remove("is-active")});
+        panes.forEach(function(p){p.hidden=true});
+      });
+    });
+  }
+};
+
+var ResourceDrawer={
+  init:function(){
+    var drawer=$("#resource-drawer");
+    var openBtn=$("#resource-open");
+    var closeBtn=$("#resource-close");
+    if(!drawer)return;
+    function open(){
+      drawer.classList.add("is-open");
+      drawer.setAttribute("aria-hidden","false");
+      document.body.classList.add("drawer-open");
+    }
+    function close(){
+      drawer.classList.remove("is-open");
+      drawer.setAttribute("aria-hidden","true");
+      document.body.classList.remove("drawer-open");
+    }
+    on(openBtn,"click",open);
+    on(closeBtn,"click",close);
+    on(drawer,"click",function(e){if(e.target===drawer)close()});
+    on(document,"keydown",function(e){if(e.key==="Escape")close()});
+  }
+};
+
+var ContactForm={
+  init:function(){
+    var f=$("#contact-form");
+    on(f,"submit",function(e){
+      e.preventDefault();
+      alert("感谢您的留言，我们将尽快与您联系。");
+      f.reset();
+    });
+  }
+};
+
+function boot(){
+  Nav.init();
+  Reveal.init();
+  Counter.init();
+  DeviceHub.init();
+  SplitPanel.init();
+  ResourceDrawer.init();
+  ContactForm.init();
+}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",boot);
+else boot();
+})();
