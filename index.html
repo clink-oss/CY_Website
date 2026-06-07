@@ -82,11 +82,10 @@ button,input,textarea,select{font:inherit;font-family:inherit}
 .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
 .prod-card{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--surface);display:flex;flex-direction:column;transition:border-color .25s,box-shadow .25s}
 .prod-card:hover{border-color:#C5CED9;box-shadow:var(--shadow)}
-.prod-card-visual{background:var(--dark);padding:1.75rem 1.25rem 1.5rem;display:flex;flex-direction:column;align-items:center;gap:.65rem;position:relative;overflow:hidden;flex-shrink:0}
-.prod-card-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(0,82,217,.18),transparent)}
-.prod-card-visual svg{width:96px;height:96px;opacity:.92;position:relative;z-index:1}
+.prod-card-visual{background:linear-gradient(180deg,#F3F7FC 0%,#EEF2F7 100%);padding:1.25rem 1.25rem 1rem;display:flex;flex-direction:column;align-items:center;gap:.65rem;position:relative;overflow:hidden;flex-shrink:0;border-bottom:1px solid var(--border)}
+.prod-card-visual img{width:100%;height:148px;object-fit:contain;object-position:center}
 .prod-spec-bar{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;position:relative;z-index:1}
-.prod-spec-tag{font-size:.62rem;padding:.22rem .55rem;border:1px solid rgba(0,82,217,.45);border-radius:3px;color:rgba(0,130,255,.85);letter-spacing:.04em;background:rgba(0,82,217,.08)}
+.prod-spec-tag{font-size:.62rem;padding:.22rem .55rem;border:1px solid #C5DEFF;border-radius:3px;color:#185FA5;letter-spacing:.04em;background:#EEF6FF}
 .prod-card-body{padding:1.25rem;display:flex;flex-direction:column;flex:1}
 .prod-cat-badge{font-size:.65rem;padding:.22rem .55rem;border-radius:3px;font-weight:600;letter-spacing:.04em;display:inline-block;margin-bottom:.55rem;width:fit-content}
 .prod-cat-badge--imaging{background:#EEF6FF;border:1px solid #C5DEFF;color:#185FA5}
@@ -170,6 +169,8 @@ button,input,textarea,select{font:inherit;font-family:inherit}
 .drawer-close{background:none;border:none;font-size:1.5rem;line-height:1;color:var(--text-muted);cursor:pointer;padding:.25rem}
 .drawer-body{padding:1rem 1.5rem 2rem;overflow-y:auto}
 .resource-list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.resource-list li{display:flex;flex-direction:column;gap:.5rem}
+.resource-item-label{font-size:.82rem;font-weight:600;color:var(--text);padding:0 .1rem}
 .resource-list a{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.1rem;border:1px solid var(--border);border-radius:8px;font-size:.88rem;font-weight:500;transition:border-color .2s,background .2s}
 .resource-list a:hover{border-color:var(--blue);background:#FAFCFF}
 .resource-list span{font-size:.75rem;color:var(--text-muted);font-weight:400}
@@ -1512,79 +1513,12 @@ button,input,textarea,select{font:inherit;font-family:inherit}
 <section id="products" class="section"><div class="container">
   <div class="section-head reveal"><span class="eyebrow">Medical Devices</span><h2>医疗设备</h2><p>覆盖影像诊断、手术系统与数字平台，每一款产品均经过临床验证。</p></div>
   <div class="prod-grid reveal">
-    <article class="prod-card"><div class="prod-card-visual"><svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="20" y="70" width="140" height="50" rx="25" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="2"/>
-  <rect x="24" y="74" width="132" height="42" rx="21" fill="none" stroke="rgba(0,100,255,.4)" stroke-width="1"/>
-  <circle cx="90" cy="95" r="30" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="12"/>
-  <circle cx="90" cy="95" r="30" fill="none" stroke="rgba(0,120,255,.5)" stroke-width="2" stroke-dasharray="4 3"/>
-  <circle cx="90" cy="95" r="18" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/>
-  <circle cx="90" cy="95" r="6" fill="rgba(0,120,255,.7)"/>
-  <rect x="60" y="120" width="60" height="24" rx="4" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
-  <rect x="75" y="128" width="30" height="8" rx="2" fill="rgba(255,255,255,.12)"/>
-  <line x1="20" y1="95" x2="40" y2="95" stroke="rgba(0,150,255,.6)" stroke-width="1.5"/>
-  <line x1="140" y1="95" x2="160" y2="95" stroke="rgba(0,150,255,.6)" stroke-width="1.5"/>
-</svg><div class="prod-spec-bar"><span class="prod-spec-tag">256排探测器</span><span class="prod-spec-tag">0.25s转速</span><span class="prod-spec-tag">低剂量AI重建</span></div></div><div class="prod-card-body"><span class="prod-cat-badge prod-cat-badge--imaging">影像诊断</span><p class="prod-tag">Precision CT</p><h4>高端 CT 扫描仪</h4><ul class="prod-highlights"><li>256 排宽体探测器</li><li>0.25s 转速 · 低剂量重建</li><li>Cardiac 一站式成像</li></ul><div class="prod-clinical"><span>临床价值</span><p>缩短卒中黄金窗口评估时间，帮助临床更快决策。</p></div></div></article>
-        <article class="prod-card"><div class="prod-card-visual"><svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="30" y="55" width="120" height="80" rx="40" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="14"/>
-  <rect x="30" y="55" width="120" height="80" rx="40" fill="none" stroke="rgba(0,120,255,.45)" stroke-width="2"/>
-  <rect x="44" y="69" width="92" height="52" rx="26" fill="rgba(0,82,217,.08)" stroke="rgba(0,120,255,.2)" stroke-width="1"/>
-  <rect x="72" y="82" width="36" height="26" rx="4" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
-  <line x1="82" y1="88" x2="98" y2="88" stroke="rgba(0,180,255,.7)" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="80" y1="93" x2="100" y2="93" stroke="rgba(0,180,255,.4)" stroke-width="1" stroke-linecap="round"/>
-  <line x1="82" y1="98" x2="98" y2="98" stroke="rgba(0,180,255,.7)" stroke-width="1.5" stroke-linecap="round"/>
-  <circle cx="50" cy="95" r="3" fill="rgba(0,120,255,.8)"/>
-  <circle cx="130" cy="95" r="3" fill="rgba(0,120,255,.8)"/>
-</svg><div class="prod-spec-bar"><span class="prod-spec-tag">3.0T超导</span><span class="prod-spec-tag">70cm大孔径</span><span class="prod-spec-tag">AI扫描协议</span></div></div><div class="prod-card-body"><span class="prod-cat-badge prod-cat-badge--imaging">影像诊断</span><p class="prod-tag">3.0T MRI</p><h4>MRI 磁共振系统</h4><ul class="prod-highlights"><li>3.0T 超导磁体 · 70cm 大孔径</li><li>AI 智能扫描协议</li><li>神经与体部高分辨率成像</li></ul><div class="prod-clinical"><span>临床价值</span><p>提升神经与肿瘤早期检出能力，改善患者检查舒适度。</p></div></div></article>
-        <article class="prod-card"><div class="prod-card-visual"><svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="45" y="30" width="90" height="110" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
-  <rect x="52" y="38" width="76" height="55" rx="4" fill="rgba(0,50,120,.4)" stroke="rgba(0,120,255,.3)" stroke-width="1"/>
-  <path d="M58 65 Q68 45 78 58 Q88 70 98 52 Q108 35 118 60" stroke="rgba(0,200,255,.7)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-  <path d="M58 72 Q70 58 80 68 Q92 78 102 62 Q112 47 120 68" stroke="rgba(0,150,255,.4)" stroke-width="1" fill="none" stroke-linecap="round"/>
-  <rect x="55" y="103" width="70" height="6" rx="3" fill="rgba(255,255,255,.08)"/>
-  <rect x="55" y="113" width="50" height="6" rx="3" fill="rgba(255,255,255,.06)"/>
-  <rect x="60" y="145" width="60" height="20" rx="6" fill="rgba(0,82,217,.5)" stroke="rgba(0,120,255,.4)" stroke-width="1"/>
-  <rect x="63" y="148" width="54" height="14" rx="4" fill="rgba(0,82,217,.3)"/>
-</svg><div class="prod-spec-bar"><span class="prod-spec-tag">128物理通道</span><span class="prod-spec-tag">弹性成像</span><span class="prod-spec-tag">AI切面识别</span></div></div><div class="prod-card-body"><span class="prod-cat-badge prod-cat-badge--imaging">影像诊断</span><p class="prod-tag">Clinical Ultrasound</p><h4>医用超声设备</h4><ul class="prod-highlights"><li>128 物理通道 · 弹性成像</li><li>AI 切面识别</li><li>门诊 / 急诊 / 床旁 POCUS</li></ul><div class="prod-clinical"><span>临床价值</span><p>让基层与床旁场景获得可靠实时影像支持。</p></div></div></article>
-    <article class="prod-card"><div class="prod-card-visual"><svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="90" cy="45" r="18" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/>
-  <circle cx="90" cy="45" r="10" fill="rgba(0,82,217,.3)" stroke="rgba(0,120,255,.5)" stroke-width="1"/>
-  <circle cx="90" cy="45" r="4" fill="rgba(0,180,255,.8)"/>
-  <line x1="90" y1="63" x2="90" y2="90" stroke="rgba(255,255,255,.25)" stroke-width="3" stroke-linecap="round"/>
-  <line x1="90" y1="90" x2="60" y2="115" stroke="rgba(255,255,255,.2)" stroke-width="2.5" stroke-linecap="round"/>
-  <line x1="90" y1="90" x2="120" y2="115" stroke="rgba(255,255,255,.2)" stroke-width="2.5" stroke-linecap="round"/>
-  <line x1="90" y1="90" x2="90" y2="120" stroke="rgba(255,255,255,.2)" stroke-width="2.5" stroke-linecap="round"/>
-  <circle cx="60" cy="118" r="7" fill="rgba(255,255,255,.08)" stroke="rgba(0,120,255,.5)" stroke-width="1.5"/>
-  <circle cx="120" cy="118" r="7" fill="rgba(255,255,255,.08)" stroke="rgba(0,120,255,.5)" stroke-width="1.5"/>
-  <circle cx="90" cy="123" r="7" fill="rgba(255,255,255,.08)" stroke="rgba(0,120,255,.5)" stroke-width="1.5"/>
-  <line x1="58" y1="123" x2="52" y2="135" stroke="rgba(0,180,255,.6)" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="118" y1="123" x2="124" y2="135" stroke="rgba(0,180,255,.6)" stroke-width="1.5" stroke-linecap="round"/>
-  <line x1="90" y1="128" x2="90" y2="142" stroke="rgba(0,180,255,.6)" stroke-width="1.5" stroke-linecap="round"/>
-</svg><div class="prod-spec-bar"><span class="prod-spec-tag">7自由度机械臂</span><span class="prod-spec-tag">3D内窥镜</span><span class="prod-spec-tag">力反馈控制</span></div></div><div class="prod-card-body"><span class="prod-cat-badge prod-cat-badge--surgery">手术系统</span><p class="prod-tag">Surgical System</p><h4>手术机器人系统</h4><ul class="prod-highlights"><li>7 自由度机械臂</li><li>3D 内窥镜 · 力反馈控制</li><li>泌尿 / 肝胆 / 胸外多术式</li></ul><div class="prod-clinical"><span>临床价值</span><p>降低微创术式创伤，缩短住院日与恢复周期。</p></div></div></article>
-    <article class="prod-card"><div class="prod-card-visual"><svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="25" y="40" width="130" height="90" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)" stroke-width="1.5"/>
-  <rect x="30" y="45" width="120" height="75" rx="5" fill="rgba(0,20,60,.6)"/>
-  <ellipse cx="75" cy="83" rx="22" ry="24" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="8"/>
-  <ellipse cx="75" cy="83" rx="22" ry="24" fill="none" stroke="rgba(0,120,255,.35)" stroke-width="1.5"/>
-  <circle cx="75" cy="72" r="4" fill="rgba(255,80,80,.9)"/>
-  <circle cx="75" cy="72" r="7" fill="none" stroke="rgba(255,80,80,.5)" stroke-width="1" stroke-dasharray="2 2"/>
-  <path d="M110 60 L140 60 M110 68 L135 68 M110 76 L138 76" stroke="rgba(255,255,255,.2)" stroke-width="1" stroke-linecap="round"/>
-  <rect x="108" y="83" width="32" height="18" rx="3" fill="rgba(0,82,217,.25)" stroke="rgba(0,120,255,.3)" stroke-width="1"/>
-  <text x="124" y="95" text-anchor="middle" fill="rgba(0,180,255,.9)" font-size="8" font-family="monospace">AI</text>
-  <line x1="97" y1="83" x2="108" y2="90" stroke="rgba(0,180,255,.5)" stroke-width="1" stroke-dasharray="2 2"/>
-  <rect x="25" y="130" width="130" height="3" rx="1.5" fill="rgba(255,255,255,.05)"/>
-  <rect x="65" y="133" width="50" height="8" rx="2" fill="rgba(255,255,255,.06)"/>
-</svg><div class="prod-spec-bar"><span class="prod-spec-tag">肺结节/脑卒中/冠脉</span><span class="prod-spec-tag">可解释性报告</span><span class="prod-spec-tag">PACS·HIS集成</span></div></div><div class="prod-card-body"><span class="prod-cat-badge prod-cat-badge--digital">数字平台</span><p class="prod-tag">AI Imaging</p><h4>AI 影像诊断系统</h4><ul class="prod-highlights"><li>肺结节 / 脑卒中 / 冠脉辅助诊断</li><li>可解释性临床报告</li><li>PACS · HIS 深度集成</li></ul><div class="prod-clinical"><span>临床价值</span><p>辅助医生降低漏诊率，提升高危病例识别效率。</p></div></div></article>
-        <article class="prod-card"><div class="prod-card-visual"><svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M55 95 C55 78 68 65 85 65 C88 55 97 48 108 48 C122 48 134 60 134 74 C141 76 147 83 147 92 C147 103 138 112 127 112 L62 112 C58 112 55 109 55 105 Z" fill="rgba(0,82,217,.15)" stroke="rgba(0,120,255,.4)" stroke-width="1.5"/>
-  <circle cx="65" cy="135" r="10" fill="rgba(255,255,255,.06)" stroke="rgba(0,120,255,.4)" stroke-width="1.5"/>
-  <circle cx="90" cy="140" r="10" fill="rgba(255,255,255,.06)" stroke="rgba(0,120,255,.4)" stroke-width="1.5"/>
-  <circle cx="115" cy="135" r="10" fill="rgba(255,255,255,.06)" stroke="rgba(0,120,255,.4)" stroke-width="1.5"/>
-  <line x1="65" y1="112" x2="65" y2="125" stroke="rgba(0,150,255,.5)" stroke-width="1.5" stroke-dasharray="3 2"/>
-  <line x1="90" y1="112" x2="90" y2="130" stroke="rgba(0,150,255,.5)" stroke-width="1.5" stroke-dasharray="3 2"/>
-  <line x1="115" y1="112" x2="115" y2="125" stroke="rgba(0,150,255,.5)" stroke-width="1.5" stroke-dasharray="3 2"/>
-  <line x1="75" y1="135" x2="80" y2="137" stroke="rgba(0,150,255,.3)" stroke-width="1"/>
-  <line x1="100" y1="137" x2="105" y2="136" stroke="rgba(0,150,255,.3)" stroke-width="1"/>
-</svg><div class="prod-spec-bar"><span class="prod-spec-tag">区域影像中心</span><span class="prod-spec-tag">设备远程质控</span><span class="prod-spec-tag">临床路径管理</span></div></div><div class="prod-card-body"><span class="prod-cat-badge prod-cat-badge--digital">数字平台</span><p class="prod-tag">Connected Care</p><h4>医疗云平台</h4><ul class="prod-highlights"><li>区域影像中心</li><li>设备远程质控</li><li>临床路径与患者档案</li></ul><div class="prod-clinical"><span>临床价值</span><p>降低跨院协作成本，让优质影像资源触达更多患者。</p></div></div></article>
+    <article class="prod-card"><div class="prod-card-visual"><img src="https://global.united-imaging.com/-/media/uih/products-training/ct/uct-760/uct-760-value.jpg?w=600" alt="联影 uCT 760 高端 CT 扫描仪" width="600" height="338" loading="lazy"><div class="prod-spec-bar"><span class="prod-spec-tag">256排探测器</span><span class="prod-spec-tag">0.25s转速</span><span class="prod-spec-tag">低剂量AI重建</span></div></div><div class="prod-card-body"><span class="prod-cat-badge prod-cat-badge--imaging">影像诊断</span><p class="prod-tag">Precision CT</p><h4>高端 CT 扫描仪</h4><ul class="prod-highlights"><li>256 排宽体探测器</li><li>0.25s 转速 · 低剂量重建</li><li>Cardiac 一站式成像</li></ul><div class="prod-clinical"><span>临床价值</span><p>缩短卒中黄金窗口评估时间，帮助临床更快决策。</p></div></div></article>
+        <article class="prod-card"><div class="prod-card-visual"><img src="https://global.united-imaging.com/-/media/uih/products-training/mr/umr-790/790.png?w=600" alt="联影 uMR 790 磁共振系统" width="600" height="455" loading="lazy"><div class="prod-spec-bar"><span class="prod-spec-tag">3.0T超导</span><span class="prod-spec-tag">70cm大孔径</span><span class="prod-spec-tag">AI扫描协议</span></div></div><div class="prod-card-body"><span class="prod-cat-badge prod-cat-badge--imaging">影像诊断</span><p class="prod-tag">3.0T MRI</p><h4>MRI 磁共振系统</h4><ul class="prod-highlights"><li>3.0T 超导磁体 · 70cm 大孔径</li><li>AI 智能扫描协议</li><li>神经与体部高分辨率成像</li></ul><div class="prod-clinical"><span>临床价值</span><p>提升神经与肿瘤早期检出能力，改善患者检查舒适度。</p></div></div></article>
+        <article class="prod-card"><div class="prod-card-visual"><img src="https://www.mindray.com/content/dam/xpace/zh/products-solutions/products/ultrasound/general-imaging/resona-i9/zhg997-s1-web.jpg" alt="迈瑞 Resona I9 医用超声设备" width="600" height="400" loading="lazy"><div class="prod-spec-bar"><span class="prod-spec-tag">128物理通道</span><span class="prod-spec-tag">弹性成像</span><span class="prod-spec-tag">AI切面识别</span></div></div><div class="prod-card-body"><span class="prod-cat-badge prod-cat-badge--imaging">影像诊断</span><p class="prod-tag">Clinical Ultrasound</p><h4>医用超声设备</h4><ul class="prod-highlights"><li>128 物理通道 · 弹性成像</li><li>AI 切面识别</li><li>门诊 / 急诊 / 床旁 POCUS</li></ul><div class="prod-clinical"><span>临床价值</span><p>让基层与床旁场景获得可靠实时影像支持。</p></div></div></article>
+    <article class="prod-card"><div class="prod-card-visual"><img src="https://global.united-imaging.com/-/media/uih/product/ir/uangio-aviva/2-3-1.png?w=600" alt="联影 uAngio AVIVA 手术机器人系统" width="600" height="338" loading="lazy"><div class="prod-spec-bar"><span class="prod-spec-tag">7自由度机械臂</span><span class="prod-spec-tag">3D内窥镜</span><span class="prod-spec-tag">力反馈控制</span></div></div><div class="prod-card-body"><span class="prod-cat-badge prod-cat-badge--surgery">手术系统</span><p class="prod-tag">Surgical System</p><h4>手术机器人系统</h4><ul class="prod-highlights"><li>7 自由度机械臂</li><li>3D 内窥镜 · 力反馈控制</li><li>泌尿 / 肝胆 / 胸外多术式</li></ul><div class="prod-clinical"><span>临床价值</span><p>降低微创术式创伤，缩短住院日与恢复周期。</p></div></div></article>
+    <article class="prod-card"><div class="prod-card-visual"><img src="https://www.uii-ai.com/file/image/product/1/q1.jpg" alt="联影智能 AI 影像诊断系统" width="600" height="338" loading="lazy"><div class="prod-spec-bar"><span class="prod-spec-tag">肺结节/脑卒中/冠脉</span><span class="prod-spec-tag">可解释性报告</span><span class="prod-spec-tag">PACS·HIS集成</span></div></div><div class="prod-card-body"><span class="prod-cat-badge prod-cat-badge--digital">数字平台</span><p class="prod-tag">AI Imaging</p><h4>AI 影像诊断系统</h4><ul class="prod-highlights"><li>肺结节 / 脑卒中 / 冠脉辅助诊断</li><li>可解释性临床报告</li><li>PACS · HIS 深度集成</li></ul><div class="prod-clinical"><span>临床价值</span><p>辅助医生降低漏诊率，提升高危病例识别效率。</p></div></div></article>
+        <article class="prod-card"><div class="prod-card-visual"><img src="https://global.united-imaging.com/-/media/uih/images/uihcloud/cloud_pacs.png?w=600" alt="联影 UIHCloud 医疗云平台" width="600" height="566" loading="lazy"><div class="prod-spec-bar"><span class="prod-spec-tag">区域影像中心</span><span class="prod-spec-tag">设备远程质控</span><span class="prod-spec-tag">临床路径管理</span></div></div><div class="prod-card-body"><span class="prod-cat-badge prod-cat-badge--digital">数字平台</span><p class="prod-tag">Connected Care</p><h4>医疗云平台</h4><ul class="prod-highlights"><li>区域影像中心</li><li>设备远程质控</li><li>临床路径与患者档案</li></ul><div class="prod-clinical"><span>临床价值</span><p>降低跨院协作成本，让优质影像资源触达更多患者。</p></div></div></article>
   </div>
 </div></section>
 <section id="cases" class="section"><div class="container">
@@ -1694,10 +1628,12 @@ button,input,textarea,select{font:inherit;font-family:inherit}
   <div class="drawer-panel"><div class="drawer-head"><h2 id="drawer-title">资料下载中心</h2><button type="button" class="drawer-close" id="resource-close" aria-label="关闭">&times;</button></div>
     <div class="drawer-body"><ul class="resource-list">
       <li>
-        <a href="https://pan.baidu.com/s/1ok-LHQFlbVB6gmGAzW3HDA" target="_blank" rel="noopener noreferrer">课程硬件清单<span>PDF · 百度网盘</span></a>
+        <span class="resource-item-label">infor.zip</span>
+        <a href="infor.zip" download="infor.zip">直接下载<span>ZIP · 本站</span></a>
+        <a href="https://pan.baidu.com/s/1ok-LHQFlbVB6gmGAzW3HDA" target="_blank" rel="noopener noreferrer">百度网盘下载<span>ZIP · 提取码 6mym</span></a>
         <div class="resource-code"><span>提取码</span><code>6mym</code><button type="button" class="btn-copy" data-copy="6mym">复制</button></div>
       </li>
-    </ul><p class="drawer-note">点击上方链接将在新窗口打开百度网盘，输入提取码 <strong>6mym</strong> 即可下载。如需完整技术文档与临床资料，请联系 clinical@example-medtech.com。</p></div>
+    </ul><p class="drawer-note">可直接下载 <strong>infor.zip</strong>，或通过百度网盘获取（提取码 <strong>6mym</strong>）。如需完整技术文档与临床资料，请联系 clinical@example-medtech.com。</p></div>
   </div></div>
 <footer class="site-footer"><div class="container footer-inner">
   <div class="footer-grid">
