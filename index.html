@@ -69,6 +69,8 @@ button,input,textarea,select{font:inherit;font-family:inherit}
 .map-pin i{width:7px;height:7px;border-radius:50%;background:var(--blue);border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.15)}
 .map-pin-hq i{width:9px;height:9px;box-shadow:0 0 0 3px rgba(0,82,217,.2)}
 .map-pin span{font-size:.62rem;color:var(--text);background:rgba(255,255,255,.92);padding:.22rem .5rem;border-radius:4px;white-space:nowrap;border:1px solid var(--border)}
+.map-pin-hq.map-pin-west{align-items:flex-end}
+.map-pin-hq.map-pin-west span{transform:translateX(-28%)}
 .map-legend{display:flex;gap:1.25rem;justify-content:center;margin-top:.85rem;font-size:.78rem;color:var(--text-muted)}
 .map-legend i{display:inline-block;width:6px;height:6px;border-radius:50%;background:#94A3B8;margin-right:.35rem}
 .map-legend i.hq{background:var(--blue)}
@@ -1500,14 +1502,14 @@ button,input,textarea,select{font:inherit;font-family:inherit}
           <circle cx="397" cy="115" r="1.5" fill="rgba(148,163,184,0.62)"/>
           <circle cx="395.4" cy="121.6" r="1.2" fill="rgba(148,163,184,0.37)"/>
         </g></svg><div class="map-markers">
-          <div class="map-pin map-pin-hq" style="left:78%;top:42%"><i></i><span>上海 · 全球总部</span></div>
-          <div class="map-pin" style="left:27%;top:38%"><i></i><span>波士顿 · 北美服务中心</span></div>
-          <div class="map-pin" style="left:52%;top:35%"><i></i><span>法兰克福 · 欧洲服务中心</span></div>
-          <div class="map-pin" style="left:59%;top:46%"><i></i><span>迪拜 · 中东服务中心</span></div>
-          <div class="map-pin" style="left:32%;top:62%"><i></i><span>圣保罗 · 拉美服务中心</span></div>
-          <div class="map-pin" style="left:87%;top:67%"><i></i><span>悉尼 · 大洋洲服务中心</span></div>
+          <div class="map-pin map-pin-hq map-pin-west" style="left:70.2%;top:27.2%"><i></i><span>杭州 · 全球总部</span></div>
+          <div class="map-pin" style="left:15.5%;top:23%"><i></i><span>波士顿 · 北美服务中心</span></div>
+          <div class="map-pin" style="left:48.5%;top:28%"><i></i><span>法兰克福 · 欧洲服务中心</span></div>
+          <div class="map-pin" style="left:55.6%;top:31%"><i></i><span>迪拜 · 中东服务中心</span></div>
+          <div class="map-pin" style="left:22.8%;top:73%"><i></i><span>圣保罗 · 拉美服务中心</span></div>
+          <div class="map-pin" style="left:85.2%;top:74%"><i></i><span>悉尼 · 大洋洲服务中心</span></div>
         </div></div></div>
-    <div class="map-legend"><span><i class="hq"></i>全球总部</span><span><i></i>区域服务中心</span></div>
+    <div class="map-legend"><span><i class="hq"></i>全球总部 · 杭州市滨江区长河路 588 号</span><span><i></i>区域服务中心</span></div>
     <div class="impact-stats reveal">
       <div class="impact-stat"><div class="num" data-count="120" data-suffix="+">0</div><div class="label">服务国家与地区</div></div>
       <div class="impact-stat"><div class="num" data-count="4800" data-suffix="+">0</div><div class="label">装机医院</div></div>
@@ -1556,14 +1558,14 @@ button,input,textarea,select{font:inherit;font-family:inherit}
     <article class="impact-card"><div class="impact-thumb"><img src="https://images.pexels.com/photos/263387/pexels-photo-263387.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" alt="移动医疗车行驶在乡村公路" loading="lazy" width="1200" height="800"><div class="impact-caption"><span class="impact-badge impact-badge--cn">中国</span><h3>农村与基层医疗可及性</h3><p class="impact-sub">让筛查走进乡镇</p></div></div></article>
     <article class="impact-card"><div class="impact-thumb"><img src="https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" alt="社区医生为老人测量血压随访" loading="lazy" width="1200" height="800"><div class="impact-caption"><span class="impact-badge impact-badge--cn">中国</span><h3>老龄化与慢病管理</h3><p class="impact-sub">持续照护</p></div></div></article>
     <article class="impact-card"><div class="impact-thumb"><img src="https://images.pexels.com/photos/6129045/pexels-photo-6129045.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" alt="医护团队携带设备深入偏远地区义诊" loading="lazy" width="1200" height="800"><div class="impact-caption"><span class="impact-badge impact-badge--cn">中国</span><h3>医疗资源不均衡区域</h3><p class="impact-sub">资源下沉</p></div></div></article>
-    <article class="impact-card"><div class="impact-thumb"><img src="https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" alt="非洲基层医护服务社区家庭" loading="lazy" width="1200" height="800"><div class="impact-caption"><span class="impact-badge impact-badge--global">全球</span><h3>全球低资源医疗地区</h3><p class="impact-sub">全球普惠</p></div></div></article>
+    <article class="impact-card"><div class="impact-thumb"><img src="images/impact-global-low-resource.jpg" alt="全球低资源医疗地区" loading="lazy" width="1200" height="800"><div class="impact-caption"><span class="impact-badge impact-badge--global">全球</span><h3>全球低资源医疗地区</h3><p class="impact-sub">全球普惠</p></div></div></article>
   </div></div></section>
 <section id="contact" class="section"><div class="container">
   <div class="section-head center reveal"><span class="eyebrow">Contact</span><h2>联系我们</h2><p>产品咨询、临床合作与全球装机服务。</p></div>
   <div class="contact-grid">
     <div class="contact-info reveal">
       <p>示例公司 Example Medical Technology<br>高端医疗设备与临床解决方案</p>
-      <div class="contact-block"><strong>中国总部</strong>上海市浦东新区张江高科技园区示例路 888 号</div>
+      <div class="contact-block"><strong>中国总部</strong>杭州市滨江区长河路 588 号</div>
       <div class="contact-block"><strong>电话</strong>+86 21 8888 0000</div>
       <div class="contact-block"><strong>商务</strong>contact@example-medtech.com</div>
       <div class="contact-block"><strong>临床支持</strong>clinical@example-medtech.com</div>
@@ -1587,7 +1589,7 @@ button,input,textarea,select{font:inherit;font-family:inherit}
 <footer class="site-footer"><div class="container footer-inner">
   <div class="footer-grid">
     <div class="footer-brand"><div class="logo"><span class="logo-mark">E</span><span class="logo-text">示例公司 Example Medical</span></div>
-    <p>源自中国，服务全球。以医疗设备与临床价值为核心，构建可信赖的全球健康解决方案。<br>上海市浦东新区张江高科技园区示例路 888 号<br>总机：400-000-0000</p></div>
+    <p>源自中国，服务全球。以医疗设备与临床价值为核心，构建可信赖的全球健康解决方案。<br>杭州市滨江区长河路 588 号<br>总机：400-000-0000</p></div>
     <div class="footer-col"><h4>医疗设备</h4><ul class="footer-links">
       <li><a href="#products">高端 CT 扫描仪</a></li>
       <li><a href="#products">MRI 磁共振系统</a></li>
