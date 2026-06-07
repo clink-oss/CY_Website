@@ -82,10 +82,9 @@ button,input,textarea,select{font:inherit;font-family:inherit}
 .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
 .prod-card{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--surface);display:flex;flex-direction:column;transition:border-color .25s,box-shadow .25s}
 .prod-card:hover{border-color:#C5CED9;box-shadow:var(--shadow)}
-.prod-card-visual{background:linear-gradient(180deg,#F3F7FC 0%,#EEF2F7 100%);padding:1.25rem 1.25rem 1rem;display:flex;flex-direction:column;align-items:center;gap:.65rem;position:relative;overflow:hidden;flex-shrink:0;border-bottom:1px solid var(--border)}
-.prod-card-visual img{width:100%;height:148px;object-fit:contain;object-position:center}
-.prod-spec-bar{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;position:relative;z-index:1}
-.prod-spec-tag{font-size:.62rem;padding:.22rem .55rem;border:1px solid #C5DEFF;border-radius:3px;color:#185FA5;letter-spacing:.04em;background:#EEF6FF}
+.prod-card-visual{background:var(--surface);padding:0;display:flex;flex-direction:column;overflow:hidden;flex-shrink:0;border-bottom:1px solid var(--border)}
+.prod-card-img{position:relative;height:200px;overflow:hidden;background:#fff}
+.prod-card-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;transform:scale(1.18)}
 .prod-card-body{padding:1.25rem;display:flex;flex-direction:column;flex:1}
 .prod-cat-badge{font-size:.65rem;padding:.22rem .55rem;border-radius:3px;font-weight:600;letter-spacing:.04em;display:inline-block;margin-bottom:.55rem;width:fit-content}
 .prod-cat-badge--imaging{background:#EEF6FF;border:1px solid #C5DEFF;color:#185FA5}
@@ -100,17 +99,25 @@ button,input,textarea,select{font:inherit;font-family:inherit}
 .prod-clinical span{display:block;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);font-weight:600;margin-bottom:.4rem}
 .prod-clinical p{font-size:.84rem;line-height:1.65;color:var(--text);padding-left:.75rem;border-left:3px solid var(--blue)}
 #cases{background:var(--surface)}
-.case-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:0}
-.case-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;display:flex;flex-direction:column;gap:1rem;transition:border-color .25s,box-shadow .25s;cursor:pointer}
+.case-section-top{display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;margin-bottom:1.75rem}
+.case-section-top .section-head{margin-bottom:0;flex:1}
+.case-scroll-nav{display:flex;gap:.5rem;flex-shrink:0;padding-bottom:.15rem}
+.case-scroll-btn{width:40px;height:40px;border:1px solid var(--border);border-radius:50%;background:var(--surface);color:var(--text);font-size:1.35rem;line-height:1;cursor:pointer;transition:border-color .2s,background .2s,color .2s;display:grid;place-items:center;padding:0}
+.case-scroll-btn:hover{border-color:var(--blue);color:var(--blue);background:#FAFCFF}
+.case-scroll-btn:disabled{opacity:.35;cursor:not-allowed;pointer-events:none}
+.case-track{display:flex;gap:1.25rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;padding:.25rem .15rem 1rem;margin:0 -.15rem;scrollbar-width:none}
+.case-track::-webkit-scrollbar{display:none}
+.case-card{flex:0 0 min(340px,84vw);scroll-snap-align:start;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;display:flex;flex-direction:column;gap:1rem;transition:border-color .25s,box-shadow .25s;cursor:pointer}
 .case-card:hover{border-color:#C5CED9;box-shadow:var(--shadow)}
 .case-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem}
 .case-hospital{font-size:.72rem;color:var(--blue);font-weight:600;letter-spacing:.04em}
 .case-device-badge{font-size:.65rem;padding:.2rem .55rem;background:#EEF6FF;border:1px solid #C5DEFF;border-radius:3px;color:#185FA5;white-space:nowrap}
+.case-date{font-size:.72rem;color:var(--text-muted);letter-spacing:.03em;margin-top:-.25rem}
 .case-card h3{font-size:1rem;font-weight:700;line-height:1.35;margin:0}
 .case-metrics{display:flex;flex-direction:column;gap:.45rem}
 .case-metric{display:flex;align-items:center;gap:.65rem}
-.case-metric-val{font-size:1.3rem;font-weight:800;color:var(--blue);line-height:1;min-width:3.2rem}
-.case-metric-desc{font-size:.82rem;color:var(--text-muted);line-height:1.4}
+.case-metric-val{font-size:1.25rem;font-weight:800;color:var(--blue);line-height:1;min-width:3.2rem}
+.case-metric-desc{font-size:.82rem;color:var(--text-muted);line-height:1.45}
 .case-card-footer{margin-top:auto;padding-top:.85rem;border-top:1px solid var(--border);font-size:.75rem;color:var(--text-muted)}
 .resp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
 .resp-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;display:flex;gap:1.25rem;align-items:flex-start}
@@ -199,7 +206,8 @@ button,input,textarea,select{font:inherit;font-family:inherit}
 @media(max-width:1024px){
 .nav{gap:.75rem}
 .prod-grid{grid-template-columns:repeat(2,1fr)}
-.case-cards{grid-template-columns:1fr}
+.case-section-top{flex-direction:column;align-items:stretch}
+.case-scroll-nav{align-self:flex-end}
 .resp-grid{grid-template-columns:1fr}
 }
 @media(max-width:768px){
@@ -1513,53 +1521,73 @@ button,input,textarea,select{font:inherit;font-family:inherit}
 <section id="products" class="section"><div class="container">
   <div class="section-head reveal"><span class="eyebrow">Medical Devices</span><h2>医疗设备</h2><p>覆盖影像诊断、手术系统与数字平台，每一款产品均经过临床验证。</p></div>
   <div class="prod-grid reveal">
-    <article class="prod-card"><div class="prod-card-visual"><img src="https://global.united-imaging.com/-/media/uih/products-training/ct/uct-760/uct-760-value.jpg?w=600" alt="联影 uCT 760 高端 CT 扫描仪" width="600" height="338" loading="lazy"><div class="prod-spec-bar"><span class="prod-spec-tag">256排探测器</span><span class="prod-spec-tag">0.25s转速</span><span class="prod-spec-tag">低剂量AI重建</span></div></div><div class="prod-card-body"><span class="prod-cat-badge prod-cat-badge--imaging">影像诊断</span><p class="prod-tag">Precision CT</p><h4>高端 CT 扫描仪</h4><ul class="prod-highlights"><li>256 排宽体探测器</li><li>0.25s 转速 · 低剂量重建</li><li>Cardiac 一站式成像</li></ul><div class="prod-clinical"><span>临床价值</span><p>缩短卒中黄金窗口评估时间，帮助临床更快决策。</p></div></div></article>
-        <article class="prod-card"><div class="prod-card-visual"><img src="https://global.united-imaging.com/-/media/uih/products-training/mr/umr-790/790.png?w=600" alt="联影 uMR 790 磁共振系统" width="600" height="455" loading="lazy"><div class="prod-spec-bar"><span class="prod-spec-tag">3.0T超导</span><span class="prod-spec-tag">70cm大孔径</span><span class="prod-spec-tag">AI扫描协议</span></div></div><div class="prod-card-body"><span class="prod-cat-badge prod-cat-badge--imaging">影像诊断</span><p class="prod-tag">3.0T MRI</p><h4>MRI 磁共振系统</h4><ul class="prod-highlights"><li>3.0T 超导磁体 · 70cm 大孔径</li><li>AI 智能扫描协议</li><li>神经与体部高分辨率成像</li></ul><div class="prod-clinical"><span>临床价值</span><p>提升神经与肿瘤早期检出能力，改善患者检查舒适度。</p></div></div></article>
-        <article class="prod-card"><div class="prod-card-visual"><img src="https://www.mindray.com/content/dam/xpace/zh/products-solutions/products/ultrasound/general-imaging/resona-i9/zhg997-s1-web.jpg" alt="迈瑞 Resona I9 医用超声设备" width="600" height="400" loading="lazy"><div class="prod-spec-bar"><span class="prod-spec-tag">128物理通道</span><span class="prod-spec-tag">弹性成像</span><span class="prod-spec-tag">AI切面识别</span></div></div><div class="prod-card-body"><span class="prod-cat-badge prod-cat-badge--imaging">影像诊断</span><p class="prod-tag">Clinical Ultrasound</p><h4>医用超声设备</h4><ul class="prod-highlights"><li>128 物理通道 · 弹性成像</li><li>AI 切面识别</li><li>门诊 / 急诊 / 床旁 POCUS</li></ul><div class="prod-clinical"><span>临床价值</span><p>让基层与床旁场景获得可靠实时影像支持。</p></div></div></article>
-    <article class="prod-card"><div class="prod-card-visual"><img src="https://global.united-imaging.com/-/media/uih/product/ir/uangio-aviva/2-3-1.png?w=600" alt="联影 uAngio AVIVA 手术机器人系统" width="600" height="338" loading="lazy"><div class="prod-spec-bar"><span class="prod-spec-tag">7自由度机械臂</span><span class="prod-spec-tag">3D内窥镜</span><span class="prod-spec-tag">力反馈控制</span></div></div><div class="prod-card-body"><span class="prod-cat-badge prod-cat-badge--surgery">手术系统</span><p class="prod-tag">Surgical System</p><h4>手术机器人系统</h4><ul class="prod-highlights"><li>7 自由度机械臂</li><li>3D 内窥镜 · 力反馈控制</li><li>泌尿 / 肝胆 / 胸外多术式</li></ul><div class="prod-clinical"><span>临床价值</span><p>降低微创术式创伤，缩短住院日与恢复周期。</p></div></div></article>
-    <article class="prod-card"><div class="prod-card-visual"><img src="https://www.uii-ai.com/file/image/product/1/q1.jpg" alt="联影智能 AI 影像诊断系统" width="600" height="338" loading="lazy"><div class="prod-spec-bar"><span class="prod-spec-tag">肺结节/脑卒中/冠脉</span><span class="prod-spec-tag">可解释性报告</span><span class="prod-spec-tag">PACS·HIS集成</span></div></div><div class="prod-card-body"><span class="prod-cat-badge prod-cat-badge--digital">数字平台</span><p class="prod-tag">AI Imaging</p><h4>AI 影像诊断系统</h4><ul class="prod-highlights"><li>肺结节 / 脑卒中 / 冠脉辅助诊断</li><li>可解释性临床报告</li><li>PACS · HIS 深度集成</li></ul><div class="prod-clinical"><span>临床价值</span><p>辅助医生降低漏诊率，提升高危病例识别效率。</p></div></div></article>
-        <article class="prod-card"><div class="prod-card-visual"><img src="https://global.united-imaging.com/-/media/uih/images/uihcloud/cloud_pacs.png?w=600" alt="联影 UIHCloud 医疗云平台" width="600" height="566" loading="lazy"><div class="prod-spec-bar"><span class="prod-spec-tag">区域影像中心</span><span class="prod-spec-tag">设备远程质控</span><span class="prod-spec-tag">临床路径管理</span></div></div><div class="prod-card-body"><span class="prod-cat-badge prod-cat-badge--digital">数字平台</span><p class="prod-tag">Connected Care</p><h4>医疗云平台</h4><ul class="prod-highlights"><li>区域影像中心</li><li>设备远程质控</li><li>临床路径与患者档案</li></ul><div class="prod-clinical"><span>临床价值</span><p>降低跨院协作成本，让优质影像资源触达更多患者。</p></div></div></article>
+    <article class="prod-card"><div class="prod-card-visual"><div class="prod-card-img"><img src="https://www.gehealthcare.com/-/media/gehc/us/images/specialties/radiology-latest-2021/new-images/product-family-carousel/revolution-apex-platform_poi_670x670.jpg?h=670&amp;w=670" alt="高端 CT 扫描仪" width="670" height="670" loading="lazy"></div></div><div class="prod-card-body"><span class="prod-cat-badge prod-cat-badge--imaging">影像诊断</span><p class="prod-tag">Precision CT</p><h4>高端 CT 扫描仪</h4><ul class="prod-highlights"><li>256 排宽体探测器</li><li>0.25s 转速 · 低剂量重建</li><li>Cardiac 一站式成像</li></ul><div class="prod-clinical"><span>临床价值</span><p>缩短卒中黄金窗口评估时间，帮助临床更快决策。</p></div></div></article>
+        <article class="prod-card"><div class="prod-card-visual"><div class="prod-card-img"><img src="https://marketing.webassets.siemens-healthineers.com/1800000005911512/d8813bf11e90/v/c9e91b840e28/siemens-healthineers_mri_magnetom-vida_hero-image.jpg" alt="MRI 磁共振系统" width="1200" height="675" loading="lazy"></div></div><div class="prod-card-body"><span class="prod-cat-badge prod-cat-badge--imaging">影像诊断</span><p class="prod-tag">3.0T MRI</p><h4>MRI 磁共振系统</h4><ul class="prod-highlights"><li>3.0T 超导磁体 · 70cm 大孔径</li><li>AI 智能扫描协议</li><li>神经与体部高分辨率成像</li></ul><div class="prod-clinical"><span>临床价值</span><p>提升神经与肿瘤早期检出能力，改善患者检查舒适度。</p></div></div></article>
+        <article class="prod-card"><div class="prod-card-visual"><div class="prod-card-img"><img src="https://images.philips.com/is/image/philipsconsumer/867f24bbe0f243fc9249b2910123d812?extend=0,0,-6,0&amp;wid=1024&amp;hei=576&amp;fit=stretch,1&amp;$jpglarge$" alt="医用超声设备" width="1024" height="576" loading="lazy"></div></div><div class="prod-card-body"><span class="prod-cat-badge prod-cat-badge--imaging">影像诊断</span><p class="prod-tag">Clinical Ultrasound</p><h4>医用超声设备</h4><ul class="prod-highlights"><li>128 物理通道 · 弹性成像</li><li>AI 切面识别</li><li>门诊 / 急诊 / 床旁 POCUS</li></ul><div class="prod-clinical"><span>临床价值</span><p>让基层与床旁场景获得可靠实时影像支持。</p></div></div></article>
+    <article class="prod-card"><div class="prod-card-visual"><div class="prod-card-img"><img src="https://ml.globenewswire.com/Resource/Download/4813abf0-2ddb-48c9-bc8a-35558ed9bb9b?size=0" alt="手术机器人系统" width="1200" height="800" loading="lazy"></div></div><div class="prod-card-body"><span class="prod-cat-badge prod-cat-badge--surgery">手术系统</span><p class="prod-tag">Surgical System</p><h4>手术机器人系统</h4><ul class="prod-highlights"><li>7 自由度机械臂</li><li>3D 内窥镜 · 力反馈控制</li><li>泌尿 / 肝胆 / 胸外多术式</li></ul><div class="prod-clinical"><span>临床价值</span><p>降低微创术式创伤，缩短住院日与恢复周期。</p></div></div></article>
+    <article class="prod-card"><div class="prod-card-visual"><div class="prod-card-img"><img src="https://marketing.webassets.siemens-healthineers.com/e505d93512e87a5c/53241d8bcb00/v/abf582e3be3b/siemens_healthineers_da_ai-powered_reading_keyvisual.png" alt="AI 影像诊断系统" width="1200" height="675" loading="lazy"></div></div><div class="prod-card-body"><span class="prod-cat-badge prod-cat-badge--digital">数字平台</span><p class="prod-tag">AI Imaging</p><h4>AI 影像诊断系统</h4><ul class="prod-highlights"><li>肺结节 / 脑卒中 / 冠脉辅助诊断</li><li>可解释性临床报告</li><li>PACS · HIS 深度集成</li></ul><div class="prod-clinical"><span>临床价值</span><p>辅助医生降低漏诊率，提升高危病例识别效率。</p></div></div></article>
+        <article class="prod-card"><div class="prod-card-visual"><div class="prod-card-img"><img src="https://marketing.webassets.siemens-healthineers.com/a7437e0513f9adcf/e0051f0837a0/v/10fdfc740a20/siemens-healthineers-dhs-rsna-2019-Teamplay_ASE.jpg" alt="医疗云平台" width="1200" height="675" loading="lazy"></div></div><div class="prod-card-body"><span class="prod-cat-badge prod-cat-badge--digital">数字平台</span><p class="prod-tag">Connected Care</p><h4>医疗云平台</h4><ul class="prod-highlights"><li>区域影像中心</li><li>设备远程质控</li><li>临床路径与患者档案</li></ul><div class="prod-clinical"><span>临床价值</span><p>降低跨院协作成本，让优质影像资源触达更多患者。</p></div></div></article>
   </div>
 </div></section>
 <section id="cases" class="section"><div class="container">
-  <div class="section-head reveal"><span class="eyebrow">Clinical Evidence</span><h2>临床案例</h2><p>来自真实三甲医院的装机与使用记录，以临床结果验证设备价值。</p></div>
-  <div class="case-cards reveal">
-    <div class="case-card">
-      <div class="case-card-top">
-        <span class="case-hospital">复旦大学附属中山医院</span>
-        <span class="case-device-badge">AI 影像诊断系统</span>
-      </div>
+  <div class="case-section-top">
+    <div class="section-head reveal"><span class="eyebrow">Clinical Evidence</span><h2>临床案例</h2><p>来自真实三甲医院的装机与使用记录，以临床结果验证设备价值。</p></div>
+    <div class="case-scroll-nav reveal" aria-hidden="true">
+      <button type="button" class="case-scroll-btn" data-case-prev aria-label="上一则案例">&#8249;</button>
+      <button type="button" class="case-scroll-btn" data-case-next aria-label="下一则案例">&#8250;</button>
+    </div>
+  </div>
+  <div class="case-track reveal" data-case-track tabindex="0" role="region" aria-label="临床案例，可左右滑动浏览">
+    <article class="case-card">
+      <div class="case-card-top"><span class="case-hospital">复旦大学附属中山医院</span><span class="case-device-badge">AI 影像诊断系统</span></div>
+      <p class="case-date">2025-03 · 放射科</p>
       <h3>AI 肺结节筛查项目</h3>
       <div class="case-metrics">
         <div class="case-metric"><span class="case-metric-val">+18%</span><span class="case-metric-desc">阳性检出率提升，帮助更早发现早期肺癌</span></div>
         <div class="case-metric"><span class="case-metric-val">−27%</span><span class="case-metric-desc">假阳性率下降，减少无效随访与患者焦虑</span></div>
       </div>
       <div class="case-card-footer">放射科 王主任团队 · 持续运行 18 个月</div>
-    </div>
-    <div class="case-card">
-      <div class="case-card-top">
-        <span class="case-hospital">北京协和医院</span>
-        <span class="case-device-badge">手术机器人系统</span>
-      </div>
+    </article>
+    <article class="case-card">
+      <div class="case-card-top"><span class="case-hospital">北京协和医院</span><span class="case-device-badge">手术机器人系统</span></div>
+      <p class="case-date">2025-01 · 肝胆外科</p>
       <h3>机器人辅助肝段切除</h3>
       <div class="case-metrics">
         <div class="case-metric"><span class="case-metric-val">−35%</span><span class="case-metric-desc">平均术中出血量降低，微创优势显著</span></div>
         <div class="case-metric"><span class="case-metric-val">−2.1天</span><span class="case-metric-desc">平均住院日缩短，加速患者康复出院</span></div>
       </div>
       <div class="case-card-footer">肝胆外科 李教授团队 · 累计完成 240+ 例</div>
-    </div>
-    <div class="case-card">
-      <div class="case-card-top">
-        <span class="case-hospital">四川大学华西医院</span>
-        <span class="case-device-badge">高端 CT 扫描仪</span>
-      </div>
+    </article>
+    <article class="case-card">
+      <div class="case-card-top"><span class="case-hospital">四川大学华西医院</span><span class="case-device-badge">高端 CT 扫描仪</span></div>
+      <p class="case-date">2024-11 · 心血管影像中心</p>
       <h3>CT 冠脉一站式评估</h3>
       <div class="case-metrics">
         <div class="case-metric"><span class="case-metric-val">98.2%</span><span class="case-metric-desc">冠脉评估完整率，一次检查完成全套评估</span></div>
         <div class="case-metric"><span class="case-metric-val">−40%</span><span class="case-metric-desc">辐射剂量下降，减少重复曝光风险</span></div>
       </div>
       <div class="case-card-footer">心血管影像中心 · 年检查量 3,200+ 例</div>
-    </div>
+    </article>
+    <article class="case-card">
+      <div class="case-card-top"><span class="case-hospital">上海交通大学医学院附属瑞金医院</span><span class="case-device-badge">MRI 磁共振系统</span></div>
+      <p class="case-date">2024-09 · 神经影像科</p>
+      <h3>3.0T MRI 脑卒中快速通道</h3>
+      <div class="case-metrics">
+        <div class="case-metric"><span class="case-metric-val">−32%</span><span class="case-metric-desc">卒中影像评估时间缩短，争取溶栓窗口</span></div>
+        <div class="case-metric"><span class="case-metric-val">+24%</span><span class="case-metric-desc">小病灶检出率提升，改善预后判断</span></div>
+      </div>
+      <div class="case-card-footer">神经影像科 陈主任团队 · 年检查量 4,800+ 例</div>
+    </article>
+    <article class="case-card">
+      <div class="case-card-top"><span class="case-hospital">浙江大学医学院附属第一医院</span><span class="case-device-badge">医用超声设备</span></div>
+      <p class="case-date">2024-07 · 急诊医学科</p>
+      <h3>床旁超声急诊快速评估</h3>
+      <div class="case-metrics">
+        <div class="case-metric"><span class="case-metric-val">8min</span><span class="case-metric-desc">创伤患者床旁评估中位用时，缩短决策链路</span></div>
+        <div class="case-metric"><span class="case-metric-val">−19%</span><span class="case-metric-desc">不必要的进一步影像检查比例下降</span></div>
+      </div>
+      <div class="case-card-footer">急诊医学科 · 月均床旁超声 1,100+ 例</div>
+    </article>
   </div>
 </div></section>
 <section id="impact" class="section"><div class="container">
@@ -1630,10 +1658,10 @@ button,input,textarea,select{font:inherit;font-family:inherit}
       <li>
         <span class="resource-item-label">infor.zip</span>
         <a href="infor.zip" download="infor.zip">直接下载<span>ZIP · 本站</span></a>
-        <a href="https://pan.baidu.com/s/1ok-LHQFlbVB6gmGAzW3HDA" target="_blank" rel="noopener noreferrer">百度网盘下载<span>ZIP · 提取码 6mym</span></a>
-        <div class="resource-code"><span>提取码</span><code>6mym</code><button type="button" class="btn-copy" data-copy="6mym">复制</button></div>
+        <a href="https://pan.baidu.com/s/1U4uSFFibarTYyeqoI4z0bw" target="_blank" rel="noopener noreferrer">百度网盘下载<span>ZIP · 提取码 a912</span></a>
+        <div class="resource-code"><span>提取码</span><code>a912</code><button type="button" class="btn-copy" data-copy="a912">复制</button></div>
       </li>
-    </ul><p class="drawer-note">可直接下载 <strong>infor.zip</strong>，或通过百度网盘获取（提取码 <strong>6mym</strong>）。如需完整技术文档与临床资料，请联系 clinical@example-medtech.com。</p></div>
+    </ul><p class="drawer-note">可直接下载 <strong>infor.zip</strong>，或通过百度网盘获取 <strong>笔记.zip</strong>（提取码 <strong>a912</strong>）。如需完整技术文档与临床资料，请联系 clinical@example-medtech.com。</p></div>
   </div></div>
 <footer class="site-footer"><div class="container footer-inner">
   <div class="footer-grid">
@@ -1755,6 +1783,30 @@ var Counter={
 
 
 
+var CaseCarousel={
+  init:function(){
+    var track=$("[data-case-track]");
+    if(!track)return;
+    var prev=$("[data-case-prev]");
+    var next=$("[data-case-next]");
+    function step(dir){
+      var card=track.querySelector(".case-card");
+      if(!card)return;
+      var gap=parseFloat(getComputedStyle(track).gap)||20;
+      track.scrollBy({left:(card.offsetWidth+gap)*dir,behavior:"smooth"});
+    }
+    function syncBtns(){
+      var max=track.scrollWidth-track.clientWidth-2;
+      if(prev)prev.disabled=track.scrollLeft<=2;
+      if(next)next.disabled=track.scrollLeft>=max;
+    }
+    on(prev,"click",function(){step(-1)});
+    on(next,"click",function(){step(1)});
+    on(track,"scroll",syncBtns);
+    syncBtns();
+  }
+};
+
 var HeroCarousel={
   init:function(){
     var root=$("[data-hero-carousel]");
@@ -1832,6 +1884,7 @@ var ContactForm={
 function boot(){
   Nav.init();
   HeroCarousel.init();
+  CaseCarousel.init();
   Reveal.init();
   Counter.init();
   ResourceDrawer.init();
