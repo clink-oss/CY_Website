@@ -79,73 +79,80 @@ button,input,textarea,select{font:inherit;font-family:inherit}
 .impact-stat .num{font-size:clamp(1.4rem,2.2vw,1.85rem);font-weight:800;color:var(--text);line-height:1}
 .impact-stat .label{font-size:.82rem;color:var(--text-muted);margin-top:.35rem}
 #products{background:var(--surface)}
-.prod-showcase{border-top:1px solid var(--border)}
-.prod-cat-tabs{display:flex;gap:2rem;border-bottom:1px solid var(--border);margin-bottom:0}
-.prod-cat-tab{padding:1rem 0;border:none;background:transparent;font-size:.9rem;font-weight:600;color:var(--text-muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .2s,border-color .2s}
-.prod-cat-tab:hover{color:var(--text)}
-.prod-cat-tab.is-active{color:var(--blue);border-bottom-color:var(--blue)}
-.prod-stage{display:grid;grid-template-columns:minmax(220px,260px) 1fr;min-height:520px}
-.prod-rail{border-right:1px solid var(--border);display:flex;flex-direction:column;padding:.75rem 0;background:var(--bg)}
-.prod-rail-item{display:flex;align-items:flex-start;gap:.85rem;width:100%;text-align:left;padding:1rem 1.25rem;border:none;background:transparent;cursor:pointer;color:inherit;border-left:3px solid transparent;transition:background .2s,border-color .2s}
-.prod-rail-item:hover{background:rgba(255,255,255,.7)}
-.prod-rail-item.is-active{background:var(--surface);border-left-color:var(--blue)}
-.prod-rail-item[hidden]{display:none}
-.prod-rail-item .rail-num{font-size:.7rem;font-weight:700;color:var(--text-muted);letter-spacing:.06em;min-width:1.4rem;padding-top:.2rem}
-.prod-rail-item .rail-body{display:flex;flex-direction:column;gap:.2rem}
-.prod-rail-item strong{font-size:.88rem;font-weight:600;line-height:1.35}
-.prod-rail-item em{font-style:normal;font-size:.72rem;color:var(--text-muted)}
-.prod-viewport{position:relative;background:var(--surface);min-height:520px}
-.prod-panel{display:none;height:100%}
-.prod-panel.is-active{display:grid;grid-template-columns:1.15fr 1fr;animation:prodIn .4s var(--ease)}
-@keyframes prodIn{from{opacity:0}to{opacity:1}}
-.prod-visual{background:#EEF2F7;display:flex;align-items:center;justify-content:center;padding:1.5rem;border-right:1px solid var(--border);min-height:480px}
-.prod-visual img{width:100%;max-height:440px;object-fit:cover;border-radius:4px;box-shadow:0 12px 40px rgba(20,26,36,.08)}
-.prod-info{padding:2.5rem 2.25rem;display:flex;flex-direction:column;justify-content:center}
-.prod-info .prod-tag{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);font-weight:600;margin-bottom:.65rem}
-.prod-info h3{font-size:clamp(1.4rem,2.5vw,1.75rem);font-weight:700;line-height:1.2;margin-bottom:1.25rem}
-.prod-highlights{list-style:none;margin-bottom:1.5rem}
-.prod-highlights li{font-size:.9rem;color:var(--text-muted);padding:.55rem 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.6rem}
-.prod-highlights li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--blue);flex-shrink:0}
-.prod-clinical{margin-bottom:1.25rem}
-.prod-clinical span{display:block;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);font-weight:600;margin-bottom:.45rem}
-.prod-clinical p{font-size:.92rem;line-height:1.7;color:var(--text);padding-left:.85rem;border-left:3px solid var(--blue)}
-.prod-experts{margin-top:auto;padding-top:1rem;border-top:1px solid var(--border)}
-.prod-experts-label{display:block;font-size:.7rem;color:var(--text-muted);margin-bottom:.5rem;letter-spacing:.04em}
-.expert-chips{display:flex;flex-wrap:wrap;gap:.4rem}
-.expert-chip{padding:.3rem .7rem;background:var(--bg);border:1px solid var(--border);border-radius:999px;font-size:.72rem;color:var(--text-muted)}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:start}
+.prod-cat-col{display:flex;flex-direction:column;gap:1rem}
+.prod-cat-header{padding-bottom:1rem;border-bottom:2px solid var(--blue)}
+.prod-cat-eyebrow{display:block;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-muted);font-weight:600;margin-bottom:.35rem}
+.prod-cat-header h3{font-size:1.1rem;font-weight:700;line-height:1.3;margin-bottom:.25rem}
+.prod-cat-header p{font-size:.82rem;color:var(--text-muted);line-height:1.55}
+.prod-cards{display:flex;flex-direction:column;gap:1rem}
+.prod-card{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--surface);display:flex;flex-direction:column;transition:border-color .25s,box-shadow .25s}
+.prod-card:hover{border-color:#C5CED9;box-shadow:var(--shadow)}
+.prod-card-visual{background:var(--dark);padding:1.75rem 1.25rem 1.5rem;display:flex;flex-direction:column;align-items:center;gap:.65rem;position:relative;overflow:hidden;flex-shrink:0}
+.prod-card-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(0,82,217,.18),transparent)}
+.prod-card-visual svg{width:96px;height:96px;opacity:.92;position:relative;z-index:1}
+.prod-spec-bar{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;position:relative;z-index:1}
+.prod-spec-tag{font-size:.62rem;padding:.22rem .55rem;border:1px solid rgba(0,82,217,.45);border-radius:3px;color:rgba(0,130,255,.85);letter-spacing:.04em;background:rgba(0,82,217,.08)}
+.prod-card-body{padding:1.25rem;display:flex;flex-direction:column;flex:1}
+.prod-card-body .prod-tag{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);font-weight:600;margin-bottom:.5rem}
+.prod-card-body h4{font-size:.95rem;font-weight:700;line-height:1.35;margin-bottom:.85rem}
+.prod-highlights{list-style:none;margin-bottom:1rem;flex:1}
+.prod-highlights li{font-size:.82rem;color:var(--text-muted);padding:.38rem 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.55rem}
+.prod-highlights li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--blue);flex-shrink:0}
+.prod-clinical{margin-top:auto}
+.prod-clinical span{display:block;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);font-weight:600;margin-bottom:.4rem}
+.prod-clinical p{font-size:.84rem;line-height:1.65;color:var(--text);padding-left:.75rem;border-left:3px solid var(--blue)}
 #cases{background:var(--surface)}
-.split-view{display:grid;grid-template-columns:1fr;gap:0;transition:grid-template-columns .4s var(--ease),gap .4s var(--ease)}
-.split-view.is-open{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.25rem}
-.split-list{display:flex;flex-direction:column;gap:.65rem;min-width:0}
-.media-item{display:grid;grid-template-columns:88px 1fr;gap:1rem;align-items:center;width:100%;text-align:left;padding:.85rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);cursor:pointer;transition:border-color .25s,background .25s;color:inherit}
-.media-item:hover{border-color:#C5CED9;background:#FAFBFD}
-.media-item.is-active{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue);background:#FAFCFF}
-.media-item img{width:88px;height:64px;object-fit:cover;border-radius:6px;background:var(--surface-alt)}
-.media-item h3{font-size:.92rem;font-weight:600;margin-bottom:.15rem;line-height:1.35}
-.media-item .tag{font-size:.68rem;color:var(--text-muted);letter-spacing:.04em}
-.split-detail{opacity:0;transform:translateX(16px);max-height:0;overflow:hidden;transition:opacity .4s var(--ease),transform .4s var(--ease),max-height .4s var(--ease);background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)}
-.split-view.is-open .split-detail{opacity:1;transform:none;max-height:900px;padding:1.25rem}
-.split-detail-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1rem}
-.split-detail-head h3{font-size:1.15rem;font-weight:700}
-.split-close{flex-shrink:0}
-.split-detail img{width:100%;max-height:220px;object-fit:cover;border-radius:8px;margin-bottom:1rem;background:var(--surface-alt)}
-.split-detail .meta{font-size:.82rem;color:var(--text-muted);margin-bottom:.5rem}
-.split-detail h4{font-size:1rem;font-weight:700;margin-bottom:.65rem}
-.split-detail p{font-size:.9rem;color:var(--text-muted);line-height:1.7;margin-bottom:.65rem}
-.split-detail .case-value{padding:.85rem 1rem;background:var(--surface-alt);border-left:3px solid var(--blue);border-radius:0 8px 8px 0;font-size:.88rem;line-height:1.65;margin-top:.5rem}
-.split-detail .case-team{font-size:.82rem;color:var(--text-muted);margin-top:.75rem}
-#impact{background:var(--bg)}
-.impact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
-.impact-card{position:relative;border-radius:calc(var(--radius) + 2px);overflow:hidden;background:var(--surface-alt)}
-.impact-thumb{position:relative;aspect-ratio:3/2;overflow:hidden}
-.impact-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,16,24,0) 42%,rgba(12,16,24,.78) 100%);pointer-events:none;z-index:1}
-.impact-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.impact-caption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:1.15rem 1.25rem 1.2rem;color:#fff}
-.impact-badge{display:inline-block;font-size:.56rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.22rem .5rem;border-radius:3px;margin-bottom:.55rem}
-.impact-badge--cn{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.28)}
-.impact-badge--global{background:rgba(0,82,217,.55);color:#fff;border:1px solid rgba(255,255,255,.2)}
-.impact-caption h3{font-size:1.05rem;font-weight:800;line-height:1.35;margin-bottom:.2rem;letter-spacing:-.01em;color:#fff}
-.impact-sub{font-size:.72rem;font-weight:500;color:rgba(255,255,255,.72);letter-spacing:.03em}
+.case-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:0}
+.case-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;display:flex;flex-direction:column;gap:1rem;transition:border-color .25s,box-shadow .25s;cursor:pointer}
+.case-card:hover{border-color:#C5CED9;box-shadow:var(--shadow)}
+.case-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem}
+.case-hospital{font-size:.72rem;color:var(--blue);font-weight:600;letter-spacing:.04em}
+.case-device-badge{font-size:.65rem;padding:.2rem .55rem;background:#EEF6FF;border:1px solid #C5DEFF;border-radius:3px;color:#185FA5;white-space:nowrap}
+.case-card h3{font-size:1rem;font-weight:700;line-height:1.35;margin:0}
+.case-metrics{display:flex;flex-direction:column;gap:.45rem}
+.case-metric{display:flex;align-items:center;gap:.65rem}
+.case-metric-val{font-size:1.3rem;font-weight:800;color:var(--blue);line-height:1;min-width:3.2rem}
+.case-metric-desc{font-size:.82rem;color:var(--text-muted);line-height:1.4}
+.case-card-footer{margin-top:auto;padding-top:.85rem;border-top:1px solid var(--border);font-size:.75rem;color:var(--text-muted)}
+.resp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.resp-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem;display:flex;gap:1.25rem;align-items:flex-start}
+.resp-icon{width:44px;height:44px;border-radius:10px;background:#EEF6FF;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.resp-icon svg{width:22px;height:22px;stroke:#0052D9;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.resp-body h3{font-size:.95rem;font-weight:700;margin-bottom:.4rem}
+.resp-body p{font-size:.85rem;color:var(--text-muted);line-height:1.65}
+.resp-stat{display:inline-flex;align-items:center;gap:.35rem;margin-top:.6rem;font-size:.78rem;font-weight:600;color:var(--blue)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #contact{background:var(--surface)}
 .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:2rem;align-items:start}
 .contact-info p{font-size:.92rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.7}
@@ -192,18 +199,9 @@ button,input,textarea,select{font:inherit;font-family:inherit}
 .reveal.visible{opacity:1;transform:none}
 @media(max-width:1024px){
 .nav{gap:.75rem}
-.prod-stage{grid-template-columns:1fr}
-.prod-rail{flex-direction:row;overflow-x:auto;border-right:none;border-bottom:1px solid var(--border);padding:0}
-.prod-rail-item{flex:0 0 auto;border-left:none;border-bottom:3px solid transparent;padding:.85rem 1rem}
-.prod-rail-item.is-active{border-bottom-color:var(--blue);border-left-color:transparent}
-.prod-panel.is-active{grid-template-columns:1fr}
-.prod-visual{min-height:280px;border-right:none;border-bottom:1px solid var(--border)}
-.prod-visual img{max-height:260px}
-.prod-info{padding:1.5rem}
-.impact-grid{grid-template-columns:1fr}
-.impact-thumb{aspect-ratio:4/3}
-.split-view.is-open{grid-template-columns:1fr}
-.split-view.is-open .split-detail{max-height:none}
+.prod-grid{grid-template-columns:1fr;gap:2rem}
+.case-cards{grid-template-columns:1fr}
+.resp-grid{grid-template-columns:1fr}
 }
 @media(max-width:768px){
 .nav{display:none;position:absolute;top:68px;left:0;right:0;background:#fff;padding:1rem 1.25rem;flex-direction:column;align-items:stretch;border-bottom:1px solid var(--border)}
@@ -215,10 +213,8 @@ button,input,textarea,select{font:inherit;font-family:inherit}
 .form-row{grid-template-columns:1fr}
 .footer-grid{grid-template-columns:1fr 1fr}
 .footer-bottom{flex-direction:column}
-.media-item{grid-template-columns:72px 1fr}
-.media-item img{width:72px;height:54px}
-.prod-cat-tabs{gap:1.25rem;overflow-x:auto}
-.prod-cat-tab{flex:0 0 auto;white-space:nowrap}
+
+
 }
 </style>
 </head>
@@ -1518,48 +1514,183 @@ button,input,textarea,select{font:inherit;font-family:inherit}
     </div></div></section>
 <section id="products" class="section"><div class="container">
   <div class="section-head reveal"><span class="eyebrow">Medical Devices</span><h2>医疗设备</h2><p>覆盖影像诊断、手术系统与数字平台，每一款产品均经过临床验证。</p></div>
-  <div class="prod-showcase reveal" data-device-hub>
-    <div class="prod-cat-tabs" role="tablist">
-      <button type="button" class="prod-cat-tab is-active" role="tab" data-cat="imaging">影像诊断</button>
-      <button type="button" class="prod-cat-tab" role="tab" data-cat="surgery">手术系统</button>
-      <button type="button" class="prod-cat-tab" role="tab" data-cat="digital">数字平台</button>
+  <div class="prod-grid reveal">
+    <div class="prod-cat-col">
+      <div class="prod-cat-header"><span class="prod-cat-eyebrow">Imaging</span><h3>影像诊断</h3><p>CT、MRI、超声全模态覆盖，支撑急诊与专科精准成像。</p></div>
+      <div class="prod-cards">
+        <article class="prod-card"><div class="prod-card-visual"><svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="20" y="70" width="140" height="50" rx="25" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="2"/>
+  <rect x="24" y="74" width="132" height="42" rx="21" fill="none" stroke="rgba(0,100,255,.4)" stroke-width="1"/>
+  <circle cx="90" cy="95" r="30" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="12"/>
+  <circle cx="90" cy="95" r="30" fill="none" stroke="rgba(0,120,255,.5)" stroke-width="2" stroke-dasharray="4 3"/>
+  <circle cx="90" cy="95" r="18" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/>
+  <circle cx="90" cy="95" r="6" fill="rgba(0,120,255,.7)"/>
+  <rect x="60" y="120" width="60" height="24" rx="4" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+  <rect x="75" y="128" width="30" height="8" rx="2" fill="rgba(255,255,255,.12)"/>
+  <line x1="20" y1="95" x2="40" y2="95" stroke="rgba(0,150,255,.6)" stroke-width="1.5"/>
+  <line x1="140" y1="95" x2="160" y2="95" stroke="rgba(0,150,255,.6)" stroke-width="1.5"/>
+</svg><div class="prod-spec-bar"><span class="prod-spec-tag">256排探测器</span><span class="prod-spec-tag">0.25s转速</span><span class="prod-spec-tag">低剂量AI重建</span></div></div><div class="prod-card-body"><p class="prod-tag">Precision CT · 影像诊断</p><h4>高端 CT 扫描仪</h4><ul class="prod-highlights"><li>256 排宽体探测器</li><li>0.25s 转速 · 低剂量重建</li><li>Cardiac 一站式成像</li></ul><div class="prod-clinical"><span>临床价值</span><p>缩短卒中黄金窗口评估时间，帮助临床更快决策。</p></div></div></article>
+        <article class="prod-card"><div class="prod-card-visual"><svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="30" y="55" width="120" height="80" rx="40" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="14"/>
+  <rect x="30" y="55" width="120" height="80" rx="40" fill="none" stroke="rgba(0,120,255,.45)" stroke-width="2"/>
+  <rect x="44" y="69" width="92" height="52" rx="26" fill="rgba(0,82,217,.08)" stroke="rgba(0,120,255,.2)" stroke-width="1"/>
+  <rect x="72" y="82" width="36" height="26" rx="4" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+  <line x1="82" y1="88" x2="98" y2="88" stroke="rgba(0,180,255,.7)" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="80" y1="93" x2="100" y2="93" stroke="rgba(0,180,255,.4)" stroke-width="1" stroke-linecap="round"/>
+  <line x1="82" y1="98" x2="98" y2="98" stroke="rgba(0,180,255,.7)" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="50" cy="95" r="3" fill="rgba(0,120,255,.8)"/>
+  <circle cx="130" cy="95" r="3" fill="rgba(0,120,255,.8)"/>
+</svg><div class="prod-spec-bar"><span class="prod-spec-tag">3.0T超导</span><span class="prod-spec-tag">70cm大孔径</span><span class="prod-spec-tag">AI扫描协议</span></div></div><div class="prod-card-body"><p class="prod-tag">3.0T MRI · 影像诊断</p><h4>MRI 磁共振系统</h4><ul class="prod-highlights"><li>3.0T 超导磁体 · 70cm 大孔径</li><li>AI 智能扫描协议</li><li>神经与体部高分辨率成像</li></ul><div class="prod-clinical"><span>临床价值</span><p>提升神经与肿瘤早期检出能力，改善患者检查舒适度。</p></div></div></article>
+        <article class="prod-card"><div class="prod-card-visual"><svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="45" y="30" width="90" height="110" rx="10" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
+  <rect x="52" y="38" width="76" height="55" rx="4" fill="rgba(0,50,120,.4)" stroke="rgba(0,120,255,.3)" stroke-width="1"/>
+  <path d="M58 65 Q68 45 78 58 Q88 70 98 52 Q108 35 118 60" stroke="rgba(0,200,255,.7)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M58 72 Q70 58 80 68 Q92 78 102 62 Q112 47 120 68" stroke="rgba(0,150,255,.4)" stroke-width="1" fill="none" stroke-linecap="round"/>
+  <rect x="55" y="103" width="70" height="6" rx="3" fill="rgba(255,255,255,.08)"/>
+  <rect x="55" y="113" width="50" height="6" rx="3" fill="rgba(255,255,255,.06)"/>
+  <rect x="60" y="145" width="60" height="20" rx="6" fill="rgba(0,82,217,.5)" stroke="rgba(0,120,255,.4)" stroke-width="1"/>
+  <rect x="63" y="148" width="54" height="14" rx="4" fill="rgba(0,82,217,.3)"/>
+</svg><div class="prod-spec-bar"><span class="prod-spec-tag">128物理通道</span><span class="prod-spec-tag">弹性成像</span><span class="prod-spec-tag">AI切面识别</span></div></div><div class="prod-card-body"><p class="prod-tag">Clinical Ultrasound · 影像诊断</p><h4>医用超声设备</h4><ul class="prod-highlights"><li>128 物理通道 · 弹性成像</li><li>AI 切面识别</li><li>门诊 / 急诊 / 床旁 POCUS</li></ul><div class="prod-clinical"><span>临床价值</span><p>让基层与床旁场景获得可靠实时影像支持。</p></div></div></article>
+      </div>
     </div>
-    <div class="prod-stage">
-      <nav class="prod-rail" aria-label="产品列表">
-        <button type="button" class="prod-rail-item" data-cat="imaging" data-device="ct"><span class="rail-num">01</span><span class="rail-body"><strong>高端 CT 扫描仪</strong><em>影像诊断</em></span></button>
-        <button type="button" class="prod-rail-item" data-cat="imaging" data-device="mri"><span class="rail-num">02</span><span class="rail-body"><strong>MRI 磁共振系统</strong><em>影像诊断</em></span></button>
-        <button type="button" class="prod-rail-item" data-cat="imaging" data-device="us"><span class="rail-num">03</span><span class="rail-body"><strong>医用超声设备</strong><em>影像诊断</em></span></button>
-        <button type="button" class="prod-rail-item" data-cat="surgery" data-device="robot"><span class="rail-num">04</span><span class="rail-body"><strong>手术机器人系统</strong><em>手术系统</em></span></button>
-        <button type="button" class="prod-rail-item" data-cat="digital" data-device="ai"><span class="rail-num">05</span><span class="rail-body"><strong>AI 影像诊断系统</strong><em>数字平台</em></span></button>
-        <button type="button" class="prod-rail-item" data-cat="digital" data-device="cloud"><span class="rail-num">06</span><span class="rail-body"><strong>医疗云平台</strong><em>数字平台</em></span></button>
-      </nav>
-      <div class="prod-viewport">
-        <article class="prod-panel" data-device="ct" data-cat="imaging"><div class="prod-visual"><img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1200&q=85" alt="高端 CT 扫描仪" loading="lazy" width="1200" height="800"></div><div class="prod-info"><p class="prod-tag">Precision CT · 影像诊断</p><h3>高端 CT 扫描仪</h3><ul class="prod-highlights"><li>256 排宽体探测器</li><li>0.25s 转速 · 低剂量重建</li><li>Cardiac 一站式成像</li></ul><div class="prod-clinical"><span>临床价值</span><p>缩短卒中黄金窗口评估时间，帮助临床更快决策。</p></div></div></article>
-        <article class="prod-panel" data-device="mri" data-cat="imaging"><div class="prod-visual"><img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=1200&q=85" alt="MRI 磁共振系统" loading="lazy" width="1200" height="800"></div><div class="prod-info"><p class="prod-tag">3.0T MRI · 影像诊断</p><h3>MRI 磁共振系统</h3><ul class="prod-highlights"><li>3.0T 超导磁体 · 70cm 大孔径</li><li>AI 智能扫描协议</li><li>神经与体部高分辨率成像</li></ul><div class="prod-clinical"><span>临床价值</span><p>提升神经与肿瘤早期检出能力，改善患者检查舒适度。</p></div><div class="prod-experts"><span class="prod-experts-label">研发与临床支持</span><div class="expert-chips"><span class="expert-chip">张伟 · 神经影像</span></div></div></div></article>
-        <article class="prod-panel" data-device="us" data-cat="imaging"><div class="prod-visual"><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=85" alt="医用超声设备" loading="lazy" width="1200" height="800"></div><div class="prod-info"><p class="prod-tag">Clinical Ultrasound · 影像诊断</p><h3>医用超声设备</h3><ul class="prod-highlights"><li>128 物理通道 · 弹性成像</li><li>AI 切面识别</li><li>门诊 / 急诊 / 床旁 POCUS</li></ul><div class="prod-clinical"><span>临床价值</span><p>让基层与床旁场景获得可靠实时影像支持。</p></div></div></article>
-        <article class="prod-panel" data-device="robot" data-cat="surgery"><div class="prod-visual"><img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=1200&q=85" alt="手术机器人系统" loading="lazy" width="1200" height="800"></div><div class="prod-info"><p class="prod-tag">Surgical System · 手术系统</p><h3>手术机器人系统</h3><ul class="prod-highlights"><li>7 自由度机械臂</li><li>3D 内窥镜 · 力反馈控制</li><li>泌尿 / 肝胆 / 胸外多术式</li></ul><div class="prod-clinical"><span>临床价值</span><p>降低微创术式创伤，缩短住院日与恢复周期。</p></div></div></article>
-        <article class="prod-panel" data-device="ai" data-cat="digital"><div class="prod-visual"><img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&q=85" alt="AI 影像诊断系统" loading="lazy" width="1200" height="800"></div><div class="prod-info"><p class="prod-tag">AI Imaging · 数字平台</p><h3>AI 影像诊断系统</h3><ul class="prod-highlights"><li>肺结节 / 脑卒中 / 冠脉辅助诊断</li><li>可解释性临床报告</li><li>PACS · HIS 深度集成</li></ul><div class="prod-clinical"><span>临床价值</span><p>辅助医生降低漏诊率，提升高危病例识别效率。</p></div><div class="prod-experts"><span class="prod-experts-label">研发与临床支持</span><div class="expert-chips"><span class="expert-chip">李明远 · AI 医学影像</span><span class="expert-chip">Dr. James Mitchell · Harvard Medical School</span></div></div></div></article>
-        <article class="prod-panel" data-device="cloud" data-cat="digital"><div class="prod-visual"><img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1200&q=85" alt="医疗云平台" loading="lazy" width="1200" height="800"></div><div class="prod-info"><p class="prod-tag">Connected Care · 数字平台</p><h3>医疗云平台</h3><ul class="prod-highlights"><li>区域影像中心</li><li>设备远程质控</li><li>临床路径与患者档案</li></ul><div class="prod-clinical"><span>临床价值</span><p>降低跨院协作成本，让优质影像资源触达更多患者。</p></div></div></article>
-      </div></div></div></section>
+    <div class="prod-cat-col">
+      <div class="prod-cat-header"><span class="prod-cat-eyebrow">Surgery</span><h3>手术系统</h3><p>微创机器人平台，覆盖多专科复杂术式。</p></div>
+      <div class="prod-cards">
+        <article class="prod-card"><div class="prod-card-visual"><svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="90" cy="45" r="18" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/>
+  <circle cx="90" cy="45" r="10" fill="rgba(0,82,217,.3)" stroke="rgba(0,120,255,.5)" stroke-width="1"/>
+  <circle cx="90" cy="45" r="4" fill="rgba(0,180,255,.8)"/>
+  <line x1="90" y1="63" x2="90" y2="90" stroke="rgba(255,255,255,.25)" stroke-width="3" stroke-linecap="round"/>
+  <line x1="90" y1="90" x2="60" y2="115" stroke="rgba(255,255,255,.2)" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="90" y1="90" x2="120" y2="115" stroke="rgba(255,255,255,.2)" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="90" y1="90" x2="90" y2="120" stroke="rgba(255,255,255,.2)" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="60" cy="118" r="7" fill="rgba(255,255,255,.08)" stroke="rgba(0,120,255,.5)" stroke-width="1.5"/>
+  <circle cx="120" cy="118" r="7" fill="rgba(255,255,255,.08)" stroke="rgba(0,120,255,.5)" stroke-width="1.5"/>
+  <circle cx="90" cy="123" r="7" fill="rgba(255,255,255,.08)" stroke="rgba(0,120,255,.5)" stroke-width="1.5"/>
+  <line x1="58" y1="123" x2="52" y2="135" stroke="rgba(0,180,255,.6)" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="118" y1="123" x2="124" y2="135" stroke="rgba(0,180,255,.6)" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="90" y1="128" x2="90" y2="142" stroke="rgba(0,180,255,.6)" stroke-width="1.5" stroke-linecap="round"/>
+</svg><div class="prod-spec-bar"><span class="prod-spec-tag">7自由度机械臂</span><span class="prod-spec-tag">3D内窥镜</span><span class="prod-spec-tag">力反馈控制</span></div></div><div class="prod-card-body"><p class="prod-tag">Surgical System · 手术系统</p><h4>手术机器人系统</h4><ul class="prod-highlights"><li>7 自由度机械臂</li><li>3D 内窥镜 · 力反馈控制</li><li>泌尿 / 肝胆 / 胸外多术式</li></ul><div class="prod-clinical"><span>临床价值</span><p>降低微创术式创伤，缩短住院日与恢复周期。</p></div></div></article>
+      </div>
+    </div>
+    <div class="prod-cat-col">
+      <div class="prod-cat-header"><span class="prod-cat-eyebrow">Digital</span><h3>数字平台</h3><p>AI 辅助诊断与云端协作，连接全院影像工作流。</p></div>
+      <div class="prod-cards">
+        <article class="prod-card"><div class="prod-card-visual"><svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="25" y="40" width="130" height="90" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)" stroke-width="1.5"/>
+  <rect x="30" y="45" width="120" height="75" rx="5" fill="rgba(0,20,60,.6)"/>
+  <ellipse cx="75" cy="83" rx="22" ry="24" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="8"/>
+  <ellipse cx="75" cy="83" rx="22" ry="24" fill="none" stroke="rgba(0,120,255,.35)" stroke-width="1.5"/>
+  <circle cx="75" cy="72" r="4" fill="rgba(255,80,80,.9)"/>
+  <circle cx="75" cy="72" r="7" fill="none" stroke="rgba(255,80,80,.5)" stroke-width="1" stroke-dasharray="2 2"/>
+  <path d="M110 60 L140 60 M110 68 L135 68 M110 76 L138 76" stroke="rgba(255,255,255,.2)" stroke-width="1" stroke-linecap="round"/>
+  <rect x="108" y="83" width="32" height="18" rx="3" fill="rgba(0,82,217,.25)" stroke="rgba(0,120,255,.3)" stroke-width="1"/>
+  <text x="124" y="95" text-anchor="middle" fill="rgba(0,180,255,.9)" font-size="8" font-family="monospace">AI</text>
+  <line x1="97" y1="83" x2="108" y2="90" stroke="rgba(0,180,255,.5)" stroke-width="1" stroke-dasharray="2 2"/>
+  <rect x="25" y="130" width="130" height="3" rx="1.5" fill="rgba(255,255,255,.05)"/>
+  <rect x="65" y="133" width="50" height="8" rx="2" fill="rgba(255,255,255,.06)"/>
+</svg><div class="prod-spec-bar"><span class="prod-spec-tag">肺结节/脑卒中/冠脉</span><span class="prod-spec-tag">可解释性报告</span><span class="prod-spec-tag">PACS·HIS集成</span></div></div><div class="prod-card-body"><p class="prod-tag">AI Imaging · 数字平台</p><h4>AI 影像诊断系统</h4><ul class="prod-highlights"><li>肺结节 / 脑卒中 / 冠脉辅助诊断</li><li>可解释性临床报告</li><li>PACS · HIS 深度集成</li></ul><div class="prod-clinical"><span>临床价值</span><p>辅助医生降低漏诊率，提升高危病例识别效率。</p></div></div></article>
+        <article class="prod-card"><div class="prod-card-visual"><svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M55 95 C55 78 68 65 85 65 C88 55 97 48 108 48 C122 48 134 60 134 74 C141 76 147 83 147 92 C147 103 138 112 127 112 L62 112 C58 112 55 109 55 105 Z" fill="rgba(0,82,217,.15)" stroke="rgba(0,120,255,.4)" stroke-width="1.5"/>
+  <circle cx="65" cy="135" r="10" fill="rgba(255,255,255,.06)" stroke="rgba(0,120,255,.4)" stroke-width="1.5"/>
+  <circle cx="90" cy="140" r="10" fill="rgba(255,255,255,.06)" stroke="rgba(0,120,255,.4)" stroke-width="1.5"/>
+  <circle cx="115" cy="135" r="10" fill="rgba(255,255,255,.06)" stroke="rgba(0,120,255,.4)" stroke-width="1.5"/>
+  <line x1="65" y1="112" x2="65" y2="125" stroke="rgba(0,150,255,.5)" stroke-width="1.5" stroke-dasharray="3 2"/>
+  <line x1="90" y1="112" x2="90" y2="130" stroke="rgba(0,150,255,.5)" stroke-width="1.5" stroke-dasharray="3 2"/>
+  <line x1="115" y1="112" x2="115" y2="125" stroke="rgba(0,150,255,.5)" stroke-width="1.5" stroke-dasharray="3 2"/>
+  <line x1="75" y1="135" x2="80" y2="137" stroke="rgba(0,150,255,.3)" stroke-width="1"/>
+  <line x1="100" y1="137" x2="105" y2="136" stroke="rgba(0,150,255,.3)" stroke-width="1"/>
+</svg><div class="prod-spec-bar"><span class="prod-spec-tag">区域影像中心</span><span class="prod-spec-tag">设备远程质控</span><span class="prod-spec-tag">临床路径管理</span></div></div><div class="prod-card-body"><p class="prod-tag">Connected Care · 数字平台</p><h4>医疗云平台</h4><ul class="prod-highlights"><li>区域影像中心</li><li>设备远程质控</li><li>临床路径与患者档案</li></ul><div class="prod-clinical"><span>临床价值</span><p>降低跨院协作成本，让优质影像资源触达更多患者。</p></div></div></article>
+      </div>
+    </div>
+  </div>
+</div></section>
 <section id="cases" class="section"><div class="container">
   <div class="section-head reveal"><span class="eyebrow">Clinical Evidence</span><h2>临床案例</h2><p>来自真实三甲医院的装机与使用记录，以临床结果验证设备价值。</p></div>
-  <div class="split-view reveal" data-split-view id="cases-split"><div class="split-list">
-    <button type="button" class="media-item" data-detail-id="case-0"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=900&q=80" alt="AI 肺结节筛查项目" loading="lazy" width="88" height="64"><div><p class="tag">复旦大学附属中山医院</p><h3>AI 肺结节筛查项目</h3></div></button>
-    <button type="button" class="media-item" data-detail-id="case-1"><img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=900&q=80" alt="机器人辅助肝段切除" loading="lazy" width="88" height="64"><div><p class="tag">北京协和医院</p><h3>机器人辅助肝段切除</h3></div></button>
-    <button type="button" class="media-item" data-detail-id="case-2"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=900&q=80" alt="CT 冠脉一站式评估" loading="lazy" width="88" height="64"><div><p class="tag">四川大学华西医院</p><h3>CT 冠脉一站式评估</h3></div></button>
-  </div><aside class="split-detail"><div class="split-detail-head"><h3>案例详情</h3><button type="button" class="split-close btn btn-ghost">收起</button></div>
-    <div class="split-detail-pane" id="case-0" hidden><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=900&q=80" alt="AI 肺结节筛查项目" loading="lazy"><p class="meta">复旦大学附属中山医院 · 使用设备：AI 影像诊断系统</p><h4>AI 肺结节筛查项目</h4><p><strong>临床效果：</strong>部署后阳性检出率提升 18%，假阳性率下降 27%。</p><div class="case-value">帮助高危人群更早发现早期肺癌，减少无效随访。</div><p class="case-team">放射科 王主任团队</p></div>
-    <div class="split-detail-pane" id="case-1" hidden><img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=900&q=80" alt="机器人辅助肝段切除" loading="lazy"><p class="meta">北京协和医院 · 使用设备：手术机器人系统</p><h4>机器人辅助肝段切除</h4><p><strong>临床效果：</strong>平均出血量降低 35%，住院日缩短 2.1 天。</p><div class="case-value">以更小创伤完成复杂肝段切除，加速患者康复。</div><p class="case-team">肝胆外科 李教授团队</p></div>
-    <div class="split-detail-pane" id="case-2" hidden><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=900&q=80" alt="CT 冠脉一站式评估" loading="lazy"><p class="meta">四川大学华西医院 · 使用设备：高端 CT 扫描仪</p><h4>CT 冠脉一站式评估</h4><p><strong>临床效果：</strong>冠脉评估完整率 98.2%，辐射剂量下降 40%。</p><div class="case-value">一次检查完成高危患者冠脉评估，减少重复曝光。</div><p class="case-team">心血管影像中心</p></div>
-  </aside></div></div></section>
+  <div class="case-cards reveal">
+    <div class="case-card">
+      <div class="case-card-top">
+        <span class="case-hospital">复旦大学附属中山医院</span>
+        <span class="case-device-badge">AI 影像诊断系统</span>
+      </div>
+      <h3>AI 肺结节筛查项目</h3>
+      <div class="case-metrics">
+        <div class="case-metric"><span class="case-metric-val">+18%</span><span class="case-metric-desc">阳性检出率提升，帮助更早发现早期肺癌</span></div>
+        <div class="case-metric"><span class="case-metric-val">−27%</span><span class="case-metric-desc">假阳性率下降，减少无效随访与患者焦虑</span></div>
+      </div>
+      <div class="case-card-footer">放射科 王主任团队 · 持续运行 18 个月</div>
+    </div>
+    <div class="case-card">
+      <div class="case-card-top">
+        <span class="case-hospital">北京协和医院</span>
+        <span class="case-device-badge">手术机器人系统</span>
+      </div>
+      <h3>机器人辅助肝段切除</h3>
+      <div class="case-metrics">
+        <div class="case-metric"><span class="case-metric-val">−35%</span><span class="case-metric-desc">平均术中出血量降低，微创优势显著</span></div>
+        <div class="case-metric"><span class="case-metric-val">−2.1天</span><span class="case-metric-desc">平均住院日缩短，加速患者康复出院</span></div>
+      </div>
+      <div class="case-card-footer">肝胆外科 李教授团队 · 累计完成 240+ 例</div>
+    </div>
+    <div class="case-card">
+      <div class="case-card-top">
+        <span class="case-hospital">四川大学华西医院</span>
+        <span class="case-device-badge">高端 CT 扫描仪</span>
+      </div>
+      <h3>CT 冠脉一站式评估</h3>
+      <div class="case-metrics">
+        <div class="case-metric"><span class="case-metric-val">98.2%</span><span class="case-metric-desc">冠脉评估完整率，一次检查完成全套评估</span></div>
+        <div class="case-metric"><span class="case-metric-val">−40%</span><span class="case-metric-desc">辐射剂量下降，减少重复曝光风险</span></div>
+      </div>
+      <div class="case-card-footer">心血管影像中心 · 年检查量 3,200+ 例</div>
+    </div>
+  </div>
+</div></section>
 <section id="impact" class="section"><div class="container">
   <div class="section-head center reveal"><span class="eyebrow">Social Responsibility</span><h2>社会责任</h2><p>医疗可及，惠及每一处。</p></div>
-  <div class="impact-grid reveal">
-    <article class="impact-card"><div class="impact-thumb"><img src="https://images.pexels.com/photos/263387/pexels-photo-263387.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" alt="移动医疗车行驶在乡村公路" loading="lazy" width="1200" height="800"><div class="impact-caption"><span class="impact-badge impact-badge--cn">中国</span><h3>农村与基层医疗可及性</h3><p class="impact-sub">让筛查走进乡镇</p></div></div></article>
-    <article class="impact-card"><div class="impact-thumb"><img src="https://images.pexels.com/photos/4386466/pexels-photo-4386466.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" alt="社区医生为老人测量血压随访" loading="lazy" width="1200" height="800"><div class="impact-caption"><span class="impact-badge impact-badge--cn">中国</span><h3>老龄化与慢病管理</h3><p class="impact-sub">持续照护</p></div></div></article>
-    <article class="impact-card"><div class="impact-thumb"><img src="https://images.pexels.com/photos/6129045/pexels-photo-6129045.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200" alt="医护团队携带设备深入偏远地区义诊" loading="lazy" width="1200" height="800"><div class="impact-caption"><span class="impact-badge impact-badge--cn">中国</span><h3>医疗资源不均衡区域</h3><p class="impact-sub">资源下沉</p></div></div></article>
-    <article class="impact-card"><div class="impact-thumb"><img src="images/impact-global-low-resource.jpg" alt="全球低资源医疗地区" loading="lazy" width="1200" height="800"><div class="impact-caption"><span class="impact-badge impact-badge--global">全球</span><h3>全球低资源医疗地区</h3><p class="impact-sub">全球普惠</p></div></div></article>
-  </div></div></section>
+  <div class="resp-grid reveal">
+    <div class="resp-card">
+      <div class="resp-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>
+      </div>
+      <div class="resp-body">
+        <h3>农村与基层医疗可及性</h3>
+        <p>通过移动医疗车与便携超声设备，将三甲医院级别的影像诊断能力下沉至县乡卫生院，缩短基层患者从筛查到确诊的等待周期。</p>
+        <span class="resp-stat">已覆盖 2,300+ 乡镇卫生院</span>
+      </div>
+    </div>
+    <div class="resp-card">
+      <div class="resp-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      </div>
+      <div class="resp-body">
+        <h3>老龄化与慢病管理</h3>
+        <p>面向高血压、糖尿病、心脑血管等慢病患者，提供连续随访与远程监测方案，助力社区医院构建可持续的老年健康管理体系。</p>
+        <span class="resp-stat">服务慢病患者 180 万+</span>
+      </div>
+    </div>
+    <div class="resp-card">
+      <div class="resp-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="resp-body">
+        <h3>医疗资源不均衡区域</h3>
+        <p>针对西部及偏远地区卫生机构，提供设备捐赠、工程师驻场培训与远程技术支持，降低优质医疗设备的获取门槛与使用成本。</p>
+        <span class="resp-stat">累计捐赠设备 680+ 台</span>
+      </div>
+    </div>
+    <div class="resp-card">
+      <div class="resp-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <div class="resp-body">
+        <h3>全球低资源医疗地区</h3>
+        <p>与国际医疗援助组织合作，向非洲、东南亚等欠发达地区提供适用型设备与远程诊断支持，让优质医疗不因地理与经济而设限。</p>
+        <span class="resp-stat">援助覆盖 38 个发展中国家</span>
+      </div>
+    </div>
+  </div>
+</div></section>
 <section id="contact" class="section"><div class="container">
   <div class="section-head center reveal"><span class="eyebrow">Contact</span><h2>联系我们</h2><p>产品咨询、临床合作与全球装机服务。</p></div>
   <div class="contact-grid">
@@ -1704,71 +1835,7 @@ var Counter={
   }
 };
 
-var DeviceHub={
-  init:function(){
-    $$("[data-device-hub]").forEach(function(hub){
-      var tabs=$$(".prod-cat-tab",hub);
-      var navItems=$$(".prod-rail-item",hub);
-      var panes=$$(".prod-panel",hub);
-      function activateCat(cat,deviceId){
-        tabs.forEach(function(t){
-          t.classList.toggle("is-active",t.getAttribute("data-cat")===cat);
-        });
-        var firstInCat=null;
-        navItems.forEach(function(btn){
-          var show=btn.getAttribute("data-cat")===cat;
-          btn.hidden=!show;
-          if(show&&!firstInCat)firstInCat=btn.getAttribute("data-device");
-        });
-        var target=deviceId||firstInCat;
-        navItems.forEach(function(btn){
-          btn.classList.toggle("is-active",btn.getAttribute("data-device")===target);
-        });
-        panes.forEach(function(p){
-          p.classList.toggle("is-active",p.getAttribute("data-device")===target);
-        });
-      }
-      tabs.forEach(function(tab){
-        on(tab,"click",function(){
-          activateCat(tab.getAttribute("data-cat"));
-        });
-      });
-      navItems.forEach(function(btn){
-        on(btn,"click",function(){
-          activateCat(btn.getAttribute("data-cat"),btn.getAttribute("data-device"));
-        });
-      });
-      var activeTab=$(".prod-cat-tab.is-active",hub);
-      if(activeTab)activateCat(activeTab.getAttribute("data-cat"));
-    });
-  }
-};
 
-var SplitPanel={
-  init:function(){
-    $$("[data-split-view]").forEach(function(root){
-      var list=root.querySelector(".split-list");
-      var detail=root.querySelector(".split-detail");
-      var panes=$$(".split-detail-pane",detail);
-      var close=root.querySelector(".split-close");
-      if(!list||!detail)return;
-      $$(".media-item",list).forEach(function(item){
-        on(item,"click",function(){
-          var id=item.getAttribute("data-detail-id");
-          $$(".media-item",list).forEach(function(x){x.classList.remove("is-active")});
-          item.classList.add("is-active");
-          panes.forEach(function(p){p.hidden=p.id!==id});
-          root.classList.add("is-open");
-        });
-      });
-      on(close,"click",function(){
-        root.classList.remove("is-open");
-        $$(".media-item",list).forEach(function(x){x.classList.remove("is-active")});
-        panes.forEach(function(p){p.hidden=true});
-      });
-    });
-  }
-};
 
 var HeroCarousel={
   init:function(){
@@ -1849,8 +1916,6 @@ function boot(){
   HeroCarousel.init();
   Reveal.init();
   Counter.init();
-  DeviceHub.init();
-  SplitPanel.init();
   ResourceDrawer.init();
   ContactForm.init();
 }
